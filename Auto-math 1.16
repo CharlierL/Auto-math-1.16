@@ -1,0 +1,4643 @@
+ 
+#notes ici :
+#animation de départ
+#Plus de constantes
+#fonctions exponentielles (à l'image des fonctions logarithmiques)
+#trier dans l'ordre des fonctions inventaires...
+#Fonctions et formules diverses (combinatoire, ...)
+#fonction qui renvoie la position d'une lettre dans l'alphabète
+#fonction qui indique si une année est bissextile
+#fonctions PGDC et PPMC de deux nombres
+#ordrer les inventaire
+#fonction qui renvoie des entiers au hasard, des réels au hasard, des listes au  hasard
+#conversion d'unités
+################################################################################
+#Luca Charlier © 2021                                                          
+#                                                                              
+#Auto-math 1.14 bientôt 1.16 !                                                 
+################################################################################
+#Packages
+import sys
+import os
+from math import *
+from time import sleep
+import random
+import sys
+from decimal import *
+from datetime import datetime
+################################################################################
+#Definitions
+def scrollTxt(text):
+    for char in text:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        sleep(0.05)
+
+def Clear():
+    os.system('cls' if os.name=='nt' else 'clear')
+    print("\n   Help() to get some help")
+
+def QClear():
+    print("Clear() clears the shell")
+
+def Root(argument, niem):
+    result = argument**(1 / niem)
+    print("The", niem, "th root of",argument,"is (approximately) equal to", result)
+    print(niem,"√(",argument,") =",result)
+    
+def QRoot():
+    print("Root(argument, nth root) is the nth root of argument")
+    
+def Sqrt(argument):
+    result = sqrt(argument)
+    print("The square root of",argument,"is (approximately) equal to",result)
+    print("√(",argument,") =", result)
+
+def QSqrt():
+    print("Sqrt(argument) is the square root of argument")
+    
+def Cos(argument, angle):
+    if angle.strip() == "rad":
+        result = cos(argument)
+    elif angle.strip() == "deg":
+        result = cos(argument * (pi/180))
+    print("The cosinus of",argument,"is (approximately) equal to", result)
+    print("cos(", argument,angle,") =", result)
+
+def QCos():
+    print("Cos(argument, type of angle(deg/rad)) is the cosinus of the angle argument")
+    
+def Sin(argument, angle):
+    if angle.strip() == "rad":
+        result = sin(argument)
+    elif angle.strip() == "deg":
+        result = sin(argument * (pi/180))
+    print("The sinus of",argument,"is (approximately) equal to", result)
+    print("sin(", argument,angle,") =", result)
+
+def QSin():
+    print("Sin(argument, type of angle(deg/rad)) is the sinus of the angle argument")
+    
+def Tan(argument, angle):
+    if angle.strip() == "rad":
+        result = tan(argument)
+    elif angle.strip() == "deg":
+        result = tan(argument * (pi/180))
+    print("The tangent of",argument,"ist (approximately) equal to", result)
+    print("tan(", argument,angle,") =", result)
+
+def QTan():
+    print("Tan(argument, type of angle(deg/rad)) is the tangent of the angle argument")
+    
+def Cot(argument, angle):
+    if angle.strip() == "rad":
+        result = 1/tan(argument)
+    elif angle.strip() == "deg":
+        result = 1/tan(argument * (pi/180))
+    print("The cotangent of",argument,"is (approximatively) equal to", result)
+    print("cot(", argument,angle,") =", result)
+
+def QCot():
+    print("Cot(argument, type of angle(deg/rad)) is the cotangent of the angle argument")
+    
+def Trigonometry():
+    print("Available functions are : Cos, Sin, Tan, Cot")
+
+def Constant(kind):
+    if kind == "mat":
+        print("Pi has the value of the circumference of a circle of a diameter of one unity")
+        print("π =~ 3.1415926535897932384626434")
+        print("")
+        print("E is the only base whose exponential's derivee is equal to itself.")
+        print("e =~ 2.7182818284590452353602874")
+    if kind == "phy":
+        print("The gravitational constant has the value of 6.673 * 10^-11 (NM^2)/Kg^2")
+        print("Avogadro's number is approximately equal to 6.022 * 10^23 /mol")
+        print("Boltzmann's constant has the value of 1.3806 * 10^-23 J/K")
+        print("The gas constant has the value of 8.314 J/(K * mol)")
+        print("The Stefan-Boltzmann constant ist approximately equal to 5.670 * 10^-8 W/(m^2 * K^4)")
+        
+def QConstant():
+    print("Constant(type(mathematical/physical) gives the value of two mathematical and five physical constants")
+    
+def Chicken():
+    print("")
+    print("")
+    print("   MM                   MM                    MM                MM")
+    print("  <' \___/|            <' \___/|             >' \___/|         <' \___/|")
+    print("    \_  _/               \_  _/ O              \_  _/            \_  _/")
+    print("      ][                   ][                    ][                ]!")
+    print("")
+    print(" Ordinary Chicken     Chicken Laying      Crowing Chicken    Chicken with")
+    print("                          an Egg                              Wooden Leg")
+    print("")
+    print("")
+    print("")
+    print("     MM                    MM                ______              MM")
+    print("    <' \___/|             <' \___/|         /______\            ")
+    print("      ][                  /  \         \___________/                WW")
+    print("")
+    print("    Rooster         Jogging Chicken    Chicken Soup        Falling Chicken")
+    print("")
+    print("")
+    print("")
+    print("    MM    MM            _--_             MM                   ///")
+    print("   <' \__/ `>          /    \           <` \___/|            <' \___/|")
+    print("     \_  _/           |      |            \_  _/.              \_  _/")
+    print("       ][              \____/               ][  *                \ \ ")
+    print("")
+    print("  Siamese Twin      Chicken in an       No Comment         Racing Chicken")
+    print("    Chicken          Early State")
+    print("")
+    print("")
+    print("                                                                |")
+    print("     MM                MM                MM     |              MM")
+    print("    <' \___/|        o>' \___/|         <' \___/|             =' \___/|")
+    print("  u/  \_  _/        O   \_  _/            \_  _/                \_  _/")
+    print("        ][         ()     ][                ][                    ][")
+    print("")
+    print(" Chicken Smoking   Puking Chicken      Chicken Leading a       Whistling")
+    print("     a Pipe                         Japanese Tourist Group      Chicken")
+    print("")
+    print("")
+    print("")
+    print("  MM                MM                      MM               MM")
+    print(" <' \_____/|       <@ \___/|          |\___/ `>             <' \___/|")
+    print("   \_  _  /          \____/            \_  _/                 \    /")
+    print("     ][ ][             ><                ][              ~~~~~~~~~~~~~~~")
+    print("")
+    print(" Four-Legged    Stoned Chicken     Chicken Looking in   Chicken that Thinks")
+    print("   Chicken                        the other  Direction     it is a Duck")
+    print("")
+    print("")
+
+def QChicken():
+    print("Chicken() provides a comic strip about chickens.")
+    
+def Pizza():
+    print("")
+    print("")
+    print("                        ___")
+    print("                        |  ~~--.")
+    print("                        |%=@%%/")
+    print("                        |o%%%/")
+    print("                     __ |%%o/")
+    print("               _,--~~ | |(_/ ._")
+    print("            ,/'  m%%%%| |o/ /  `\.")
+    print("           /' m%%o(_)%| |/ /o%%m `\ ")
+    print("         /' %%@=%o%%%o|   /(_)o%%% `\ ")
+    print("        /  %o%%%%%=@%%|  /%%o%%@=%%  \ ")
+    print("       |  (_)%(_)%%o%%| /%%%=@(_)%%%  |")
+    print("       | %%o%%%%o%%%(_|/%o%%o%%%%o%%% |")
+    print("       | %%o%(_)%%%%%o%(_)%%%o%%o%o%% |")
+    print("       |  (_)%%=@%(_)%o%o%%(_)%o(_)%  |")
+    print("        \ ~%%o%%%%%o%o%=@%%o%%@%%o%~ /")
+    print("         \. ~o%%(_)%%%o%(_)%%(_)o~ ,/")
+    print("           \_ ~o%=@%(_)%o%%(_)%~ _/")
+    print("             `\_~~o%%%o%%%%%~~_/'")
+    print("                `--..____,,--'")
+    print("")
+    print("")
+
+def QPizza():
+    print("Pizza() provides a tasty warm italian pizza.")
+    
+def Image():
+    print("Available images are : Chicken, Pizza.")
+    
+def Logarithm(base, argument):
+    if base.strip() == "e":
+      base = 2.7182818284
+      base1 = "e"
+    else :
+        base = float(base)
+        base1 = float(base)
+    result = log(argument)/log(base)
+    print("The logarithm of a base of", base1, " and of an argument of", argument,"is (approximately) equal to",result)
+    print("log_", base1, "(", argument,") = ",result)
+
+def QLogarithm():
+    print("Logarithm(base, argument) is the logarithm of a base of 'base' of the argument. If the base is 'e', then the value is automatically adjusted")
+
+def LogarithmNatural(argument):
+    result = log(argument)/log(2.7182818284)
+    print("The natural logarithm (of a base of e) and of an argument of", argument,"is (approximately) equal to",result)
+    print("ln(", argument,") = ",result)
+
+def QLogarithmNatural():
+    print("LogarithmNatural(argument) is the natural logarithm of the argument.")
+
+def LogarithmDecimal(argument):
+    result = log(argument)/log(10)
+    print("The decimal logarithm (of a base of 10) and of an argument of", argument,"is (approximately) equal to",result)
+    print("log(", argument,") = ",result)
+
+def QLogarithmDecimal():
+    print("LogarithmDecimal(argument) is the decimal logarithm of the argument.")
+
+def AsciiArtText(text):
+    c1 = ""
+    c2 = ""
+    c3 = ""
+    c4 = ""
+    c5 = ""
+    c6 = ""
+    c7 = ""
+    c7 = ""
+    c8 = ""
+    cerror = set()
+    for i in text:
+        if i == "a":
+            c8 = c8 + "       "
+            c7 = c7 + "       "
+            c6 = c6 + "  __ _ "
+            c5 = c5 + " / _` |"
+            c4 = c4 + "| (_| |"
+            c3 = c3 + " \__,_|"
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "A":
+            c8 = c8 + "           "
+            c7 = c7 + "    /\     "
+            c6 = c6 + "   /  \    "
+            c5 = c5 + "  / /\ \   "
+            c4 = c4 + " / ____ \  "
+            c3 = c3 + "/_/    \_\ "
+            c2 = c2 + "           "
+            c1 = c1 + "           "
+        elif i == "æ":
+            c8 = c8 + "            "
+            c7 = c7 + "            "
+            c6 = c6 + "  __ ____   "
+            c5 = c5 + " / _` | _ \ "
+            c4 = c4 + "| (_| | __/ "
+            c3 = c3 + " \__,_|___| "
+            c2 = c2 + "            "
+            c1 = c1 + "            "
+        elif i == "Æ":
+            c8 = c8 + "     _______ "
+            c7 = c7 + "    /   ____|"
+            c6 = c6 + "   /   |__   "
+            c5 = c5 + "  / /|  __|  "
+            c4 = c4 + " / ___ |____ "
+            c3 = c3 + "/_/  |______|"
+            c2 = c2 + "             "
+            c1 = c1 + "             "
+        elif i == "å":
+            c8 = c8 + "   _   "
+            c7 = c7 + "  (_)  "
+            c6 = c6 + "  __ _ "
+            c5 = c5 + " / _` |"
+            c4 = c4 + "| (_| |"
+            c3 = c3 + " \__,_|"
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "A":
+            c8 = c8 + "    (_)    "
+            c7 = c7 + "    /\     "
+            c6 = c6 + "   /  \    "
+            c5 = c5 + "  / /\ \   "
+            c4 = c4 + " / ____ \  "
+            c3 = c3 + "/_/    \_\ "
+            c2 = c2 + "           "
+            c1 = c1 + "           "
+        elif i == "ä":
+            c8 = c8 + " _   _ "
+            c7 = c7 + "(_) (_)"
+            c6 = c6 + "  __ _ "
+            c5 = c5 + " / _` |"
+            c4 = c4 + "| (_| |"
+            c3 = c3 + " \__,_|"
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "Ä":
+            c8 = c8 + "  _    _   "
+            c7 = c7 + " (_)/\(_)  "
+            c6 = c6 + "   /  \    "
+            c5 = c5 + "  / /\ \   "
+            c4 = c4 + " / ____ \  "
+            c3 = c3 + "/_/    \_\ "
+            c2 = c2 + "           "
+            c1 = c1 + "           "
+        elif i == "à":
+            c8 = c8 + "   _   "
+            c7 = c7 + "  \_\  "
+            c6 = c6 + "  __ _ "
+            c5 = c5 + " / _` |"
+            c4 = c4 + "| (_| |"
+            c3 = c3 + " \__,_|"
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "À":
+            c8 = c8 + "    _      "
+            c7 = c7 + "   \_\     "
+            c6 = c6 + "   /  \    "
+            c5 = c5 + "  / /\ \   "
+            c4 = c4 + " / ____ \  "
+            c3 = c3 + "/_/    \_\ "
+            c2 = c2 + "           "
+            c1 = c1 + "           "
+        elif i == "â":
+            c8 = c8 + "  /  \  "
+            c7 = c7 + " /_/\_\ "
+            c6 = c6 + "  __ _  "
+            c5 = c5 + " / _` | "
+            c4 = c4 + "| (_| | "
+            c3 = c3 + " \__,_| "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "Â":
+            c8 = c8 + "   /  \    "
+            c7 = c7 + "  /_/\_\   "
+            c6 = c6 + "   /  \    "
+            c5 = c5 + "  / /\ \   "
+            c4 = c4 + " / ____ \  "
+            c3 = c3 + "/_/    \_\ "
+            c2 = c2 + "           "
+            c1 = c1 + "           "
+        elif i == "b": 
+            c8 = c8 + " _     "
+            c7 = c7 + "| |    "
+            c6 = c6 + "| |__  "
+            c5 = c5 + "| '_ \ "
+            c4 = c4 + "| |_) |"
+            c3 = c3 + "|_.__/ "
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "B":
+            c8 = c8 + " ____  "
+            c7 = c7 + "|  _ \ "
+            c6 = c6 + "| |_) |"
+            c5 = c5 + "|  _ < "
+            c4 = c4 + "| |_) |"
+            c3 = c3 + "|____/ "
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "c":
+            c8 = c8 + "      "
+            c7 = c7 + "      "
+            c6 = c6 + "  ___ "
+            c5 = c5 + " / __|"
+            c4 = c4 + "| (__ "
+            c3 = c3 + " \___|"
+            c2 = c2 + "      "
+            c1 = c1 + "      "
+        elif i == "C":
+            c8 = c8 + "  _____ "
+            c7 = c7 + " / ____|"
+            c6 = c6 + "| |     "
+            c5 = c5 + "| |     "
+            c4 = c4 + "| |____ "
+            c3 = c3 + " \_____|"
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "ç":
+            c8 = c8 + "      "
+            c7 = c7 + "      "
+            c6 = c6 + "  ___ "
+            c5 = c5 + " / __|"
+            c4 = c4 + "| (__ "
+            c3 = c3 + " \_ _|"
+            c2 = c2 + "  /|  "
+            c1 = c1 + "      "
+        elif  i == "Ç":
+            c8 = c8 + "  _____ "
+            c7 = c7 + " / ____|"
+            c6 = c6 + "| |     "
+            c5 = c5 + "| |     "
+            c4 = c4 + "| |____ "
+            c3 = c3 + " \_____|"
+            c2 = c2 + "   /|   "
+            c1 = c1 + "        "
+        elif i == "d":
+            c8 = c8 + "     _ "
+            c7 = c7 + "    | |"
+            c6 = c6 + "  __| |"
+            c5 = c5 + " / _` |"
+            c4 = c4 + "| (_| |"
+            c3 = c3 + " \__,_|"
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "D":
+            c8 = c8 + " _____  "
+            c7 = c7 + "|  __ \ "
+            c6 = c6 + "| |  | |"
+            c5 = c5 + "| |  | |"
+            c4 = c4 + "| |__| |"
+            c3 = c3 + "|_____/ "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "e":
+            c8 = c8 + "       "
+            c7 = c7 + "       "
+            c6 = c6 + "  ___  "
+            c5 = c5 + " / _ \ "
+            c4 = c4 + "|  __/ "
+            c3 = c3 + " \___| "
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "E":
+            c8 = c8 + " ______ "
+            c7 = c7 + "|  ____|"
+            c6 = c6 + "| |__   "
+            c5 = c5 + "|  __|  "
+            c4 = c4 + "| |____ "
+            c3 = c3 + "|______|"
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "è":
+            c8 = c8 + "   _   "
+            c7 = c7 + "  \_\  "
+            c6 = c6 + "  ___  "
+            c5 = c5 + " / _ \ "
+            c4 = c4 + "|  __/ "
+            c3 = c3 + " \___| "
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "È":
+            c8 = c8 + " _\_\__ "
+            c7 = c7 + "|  ____|"
+            c6 = c6 + "| |__   "
+            c5 = c5 + "|  __|  "
+            c4 = c4 + "| |____ "
+            c3 = c3 + "|______|"
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "é":
+            c8 = c8 + "   _   "
+            c7 = c7 + "  /_/  "
+            c6 = c6 + "  ___  "
+            c5 = c5 + " / _ \ "
+            c4 = c4 + "|  __/ "
+            c3 = c3 + " \___| "
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "É":
+            c8 = c8 + " __/_/_ "
+            c7 = c7 + "|  ____|"
+            c6 = c6 + "| |__   "
+            c5 = c5 + "|  __|  "
+            c4 = c4 + "| |____ "
+            c3 = c3 + "|______|"
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "ê":
+            c8 = c8 + " /  \  "
+            c7 = c7 + "/_/\_\ "
+            c6 = c6 + "  ___  "
+            c5 = c5 + " / _ \ "
+            c4 = c4 + "|  __/ "
+            c3 = c3 + " \___| "
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "Ê":
+            c8 = c8 + " __/_\_ "
+            c7 = c7 + "|  ____|"
+            c6 = c6 + "| |__   "
+            c5 = c5 + "|  __|  "
+            c4 = c4 + "| |____ "
+            c3 = c3 + "|______|"
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "f":
+            c8 = c8 + "  __ "
+            c7 = c7 + " / _|"
+            c6 = c6 + "| |_ "
+            c5 = c5 + "|  _|"
+            c4 = c4 + "| |  "
+            c3 = c3 + "|_|  "
+            c2 = c2 + "     "
+            c1 = c1 + "     "
+        elif i == "F":
+            c8 = c8 + " ______ "
+            c7 = c7 + "|  ____|"
+            c6 = c6 + "| |__   "
+            c5 = c5 + "|  __|  "
+            c4 = c4 + "| |     "
+            c3 = c3 + "|_|     "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "g":
+            c8 = c8 + "       "
+            c7 = c7 + "       "
+            c6 = c6 + "  __ _ "
+            c5 = c5 + " / _` |"
+            c4 = c4 + "| (_| |"
+            c3 = c3 + " \__, |"
+            c2 = c2 + "  __/ |"
+            c1 = c1 + " |___/ "
+        elif i == "G":
+            c8 = c8 + "  _____ "
+            c7 = c7 + " / ____|"
+            c6 = c6 + "| |  __ "
+            c5 = c5 + "| | |_ |"
+            c4 = c4 + "| |__| |"
+            c3 = c3 + " \_____|"
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "h":
+            c8 = c8 + " _     "
+            c7 = c7 + "| |    "
+            c6 = c6 + "| |__  "
+            c5 = c5 + "| '_ \ "
+            c4 = c4 + "| | | |"
+            c3 = c3 + "|_| |_|"
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "H":
+            c8 = c8 + " _    _ "
+            c7 = c7 + "| |  | |"
+            c6 = c6 + "| |__| |"
+            c5 = c5 + "|  __  |"
+            c4 = c4 + "| |  | |"
+            c3 = c3 + "|_|  |_|"
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "i":
+            c8 = c8 + " _ "
+            c7 = c7 + "(_)"
+            c6 = c6 + " _ "
+            c5 = c5 + "| |"
+            c4 = c4 + "| |"
+            c3 = c3 + "|_|"
+            c2 = c2 + "   "
+            c1 = c1 + "   "
+        elif i == "I":
+            c8 = c8 + " _____ "
+            c7 = c7 + "|_   _|"
+            c6 = c6 + "  | |  "
+            c5 = c5 + "  | |  "
+            c4 = c4 + " _| |_ "
+            c3 = c3 + "|_____|"
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "î":
+            c8 = c8 + " _  "
+            c7 = c7 + "/_\ "
+            c6 = c6 + " _  "
+            c5 = c5 + "| | "
+            c4 = c4 + "| | "
+            c3 = c3 + "|_| "
+            c2 = c2 + "    "
+            c1 = c1 + "    "
+        elif i == "Î":
+            c8 = c8 + " _/_\_ "
+            c7 = c7 + "|_   _|"
+            c6 = c6 + "  | |  "
+            c5 = c5 + "  | |  "
+            c4 = c4 + " _| |_ "
+            c3 = c3 + "|_____|"
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "ï":
+            c8 = c8 + " _  _ "
+            c7 = c7 + "(_)(_)"
+            c6 = c6 + "  _   "
+            c5 = c5 + " | |  "
+            c4 = c4 + " | |  "
+            c3 = c3 + " |_|  "
+            c2 = c2 + "      "
+            c1 = c1 + "      "
+        elif i == "Ï":
+            c8 = c8 + "(_)(_) "
+            c7 = c7 + "|_   _|"
+            c6 = c6 + "  | |  "
+            c5 = c5 + "  | |  "
+            c4 = c4 + " _| |_ "
+            c3 = c3 + "|_____|"
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "j":
+            c8 = c8 + "   _ "
+            c7 = c7 + "  (_)"
+            c6 = c6 + "   _ "
+            c5 = c5 + "  | |"
+            c4 = c4 + "  | |"
+            c3 = c3 + "  | |"
+            c2 = c2 + " _/ |"
+            c1 = c1 + "|__/ "
+        elif i == "J":
+            c8 = c8 + "      _ "
+            c7 = c7 + "     | |"
+            c6 = c6 + "     | |"
+            c5 = c5 + " _   | |"
+            c4 = c4 + "| |__| |"
+            c3 = c3 + " \____/ "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "k":
+            c8 = c8 + " _     "
+            c7 = c7 + "| |    "
+            c6 = c6 + "| | __ "
+            c5 = c5 + "| |/ / "
+            c4 = c4 + "|   <  "
+            c3 = c3 + "|_|\_\ "
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "K":
+            c8 = c8 + " _  __ "
+            c7 = c7 + "| |/ / "
+            c6 = c6 + "| ' /  "
+            c5 = c5 + "|  <   "
+            c4 = c4 + "| . \  "
+            c3 = c3 + "|_|\_\ "
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "l":
+            c8 = c8 + " _ "
+            c7 = c7 + "| |"
+            c6 = c6 + "| |"
+            c5 = c5 + "| |"
+            c4 = c4 + "| |"
+            c3 = c3 + "|_|"
+            c2 = c2 + "   "
+            c1 = c1 + "   "
+        elif i == "L":
+            c8 = c8 + " _      "
+            c7 = c7 + "| |     "
+            c6 = c6 + "| |     "
+            c5 = c5 + "| |     "
+            c4 = c4 + "| |____ "
+            c3 = c3 + "|______|"
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "m":
+            c8 = c8 + "           "
+            c7 = c7 + "           "
+            c6 = c6 + " _ __ ___  "
+            c5 = c5 + "| '_ ` _ \ "
+            c4 = c4 + "| | | | | |"
+            c3 = c3 + "|_| |_| |_|"
+            c2 = c2 + "           "
+            c1 = c1 + "           "
+        elif i == "M":
+            c8 = c8 + " __  __ "
+            c7 = c7 + "|  \/  |"
+            c6 = c6 + "| \  / |"
+            c5 = c5 + "| |\/| |"
+            c4 = c4 + "| |  | |"
+            c3 = c3 + "|_|  |_|"
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "n":
+            c8 = c8 + "       "
+            c7 = c7 + "       "
+            c6 = c6 + " _ __  "
+            c5 = c5 + "| '_ \ "
+            c4 = c4 + "| | | |"
+            c3 = c3 + "|_| |_|"
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "N":
+            c8 = c8 + " _   _ "
+            c7 = c7 + "| \ | |"
+            c6 = c6 + "|  \| |"
+            c5 = c5 + "| . ` |"
+            c4 = c4 + "| |\  |"
+            c3 = c3 + "|_| \_|"
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "o":
+            c8 = c8 + "       "
+            c7 = c7 + "       "
+            c6 = c6 + "  ___  "
+            c5 = c5 + " / _ \ "
+            c4 = c4 + "| (_) |"
+            c3 = c3 + " \___/ "
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "O":
+            c8 = c8 + "  ____  "
+            c7 = c7 + " / __ \ "
+            c6 = c6 + "| |  | |"
+            c5 = c5 + "| |  | |"
+            c4 = c4 + "| |__| |"
+            c3 = c3 + " \____/ "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "ô" or i == "Ô":
+            c8 = c8 + "  /  \  "
+            c7 = c7 + " /_/\_\ "
+            c6 = c6 + "  ___   "
+            c5 = c5 + " / _ \  "
+            c4 = c4 + "| (_) | "
+            c3 = c3 + " \___/  "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "Ô":
+            c8 = c8 + "  _/_\  "
+            c7 = c7 + " / __ \ "
+            c6 = c6 + "| |  | |"
+            c5 = c5 + "| |  | |"
+            c4 = c4 + "| |__| |"
+            c3 = c3 + " \____/ "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "ø":
+            c8 = c8 + "       "
+            c7 = c7 + "       "
+            c6 = c6 + "  __// "
+            c5 = c5 + " / //\ "
+            c4 = c4 + "|(//) |"
+            c3 = c3 + " //__/ "
+            c2 = c2 + "//     "
+            c1 = c1 + "       "
+        elif i == "Ø":
+            c8 = c8 + "  _____ "
+            c7 = c7 + " / __// "
+            c6 = c6 + "| | // |"
+            c5 = c5 + "| |//| |"
+            c4 = c4 + "| //_| |"
+            c3 = c3 + " //___/ "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "ö":
+            c8 = c8 + " _   _ "
+            c7 = c7 + "(_) (_)"
+            c6 = c6 + "  ___  "
+            c5 = c5 + " / _ \ "
+            c4 = c4 + "| (_) |"
+            c3 = c3 + " \___/ "
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "Ö":
+            c8 = c8 + "  _   _ "
+            c7 = c7 + " (_)_(_)"
+            c6 = c6 + "  / _ \ "
+            c5 = c5 + " | | | |"
+            c4 = c4 + " | |_| |"
+            c3 = c3 + "  \___/ "
+            c2 = c2 + ""
+            c1 = c1 + ""
+        elif i == "p":
+            c8 = c8 + "       "
+            c7 = c7 + "       "
+            c6 = c6 + " _ __  "
+            c5 = c5 + "| '_ \ "
+            c4 = c4 + "| |_) |"
+            c3 = c3 + "| .__/ "
+            c2 = c2 + "| |    "
+            c1 = c1 + "|_|    "
+        elif i == "P":
+            c8 = c8 + " _____  "
+            c7 = c7 + "|  __ \ "
+            c6 = c6 + "| |__) |"
+            c5 = c5 + "|  ___/ "
+            c4 = c4 + "| |     "
+            c3 = c3 + "|_|     "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "q":
+            c8 = c8 + "       "
+            c7 = c7 + "       "
+            c6 = c6 + "  __ _ "
+            c5 = c5 + " / _` |"
+            c4 = c4 + "| (_| |"
+            c3 = c3 + " \__, |"
+            c2 = c2 + "    | |"
+            c1 = c1 + "    |_|"
+        elif i == "Q":
+            c8 = c8 + "  ____   "
+            c7 = c7 + " / __ \  "
+            c6 = c6 + "| |  | | "
+            c5 = c5 + "| |  | | "
+            c4 = c4 + "| |__| | "
+            c3 = c3 + " \___\_\ "
+            c2 = c2 + "         "
+            c1 = c1 + "         "
+        elif i == "r":
+            c8 = c8 + "      "
+            c7 = c7 + "      "
+            c6 = c6 + " _ __ "
+            c5 = c5 + "| '__|"
+            c4 = c4 + "| |   "
+            c3 = c3 + "|_|   "
+            c2 = c2 + "      "
+            c1 = c1 + "      "
+        elif i == "R":
+            c8 = c8 + " _____   "
+            c7 = c7 + "|  __ \  "
+            c6 = c6 + "| |__) | "
+            c5 = c5 + "|  _  /  "
+            c4 = c4 + "| | \ \  "
+            c3 = c3 + "|_|  \_\ "
+            c2 = c2 + "         "
+            c1 = c1 + "         "
+        elif i == "s":
+            c8 = c8 + "      "
+            c7 = c7 + "      "
+            c6 = c6 + " ___  "
+            c5 = c5 + "/ __| "
+            c4 = c4 + "\__ \ "
+            c3 = c3 + "|___/ "
+            c2 = c2 + "      "
+            c1 = c1 + "      "
+        elif i == "S":
+            c8 = c8 + "  _____ "
+            c7 = c7 + " / ____|"
+            c6 = c6 + "| (___  "
+            c5 = c5 + " \___ \ "
+            c4 = c4 + " ____) |"
+            c3 = c3 + "|_____/ "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "t":
+            c8 = c8 + " _   "
+            c7 = c7 + "| |  "
+            c6 = c6 + "| |_ "
+            c5 = c5 + "| __|"
+            c4 = c4 + "| |_ "
+            c3 = c3 + " \__|"
+            c2 = c2 + "     "
+            c1 = c1 + "     "
+        elif i == "T":
+            c8 = c8 + " _______ "
+            c7 = c7 + "|__   __|"
+            c6 = c6 + "   | |   "
+            c5 = c5 + "   | |   "
+            c4 = c4 + "   | |   "
+            c3 = c3 + "   |_|   "
+            c2 = c2 + "         "
+            c1 = c1 + "         "
+        elif i == "u":
+            c8 = c8 + "       "
+            c7 = c7 + "       "
+            c6 = c6 + " _   _ "
+            c5 = c5 + "| | | |"
+            c4 = c4 + "| |_| |"
+            c3 = c3 + " \__,_|"
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "U":
+            c8 = c8 + " _    _ "
+            c7 = c7 + "| |  | |"
+            c6 = c6 + "| |  | |"
+            c5 = c5 + "| |  | |"
+            c4 = c4 + "| |__| |"
+            c3 = c3 + " \____/ "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "ü":
+            c8 = c8 + " _   _ "
+            c7 = c7 + "(_) (_)"
+            c6 = c6 + " _   _ "
+            c5 = c5 + "| | | |"
+            c4 = c4 + "| |_| |"
+            c3 = c3 + " \__,_|"
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "Ü":
+            c8 = c8 + "(_)  (_)"
+            c7 = c7 + "| |  | |"
+            c6 = c6 + "| |  | |"
+            c5 = c5 + "| |  | |"
+            c4 = c4 + "| |__| |"
+            c3 = c3 + " \____/ "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "v":
+            c8 = c8 + "       "
+            c7 = c7 + "       "
+            c6 = c6 + "__   __"
+            c5 = c5 + "\ \ / /"
+            c4 = c4 + " \ V / "
+            c3 = c3 + "  \_/  "
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "V":
+            c8 = c8 + "__      __"
+            c7 = c7 + "\ \    / /"
+            c6 = c6 + " \ \  / / "
+            c5 = c5 + "  \ \/ /  "
+            c4 = c4 + "   \  /   "
+            c3 = c3 + "    \/    "
+            c2 = c2 + "          "
+            c1 = c1 + "          "
+        elif i == "w":
+            c8 = c8 + "          "
+            c7 = c7 + "          "
+            c6 = c6 + "__      __"
+            c5 = c5 + "\ \ /\ / /"
+            c4 = c4 + " \ V  V / "
+            c3 = c3 + "  \_/\_/  "
+            c2 = c2 + "          "
+            c1 = c1 + "          "
+        elif i == "W":
+            c8 = c8 + "__          __"
+            c7 = c7 + "\ \        / /"
+            c6 = c6 + " \ \  /\  / / "
+            c5 = c5 + "  \ \/  \/ /  "
+            c4 = c4 + "   \  /\  /   "
+            c3 = c3 + "    \/  \/    "
+            c2 = c2 + "              "
+            c1 = c1 + "             "
+        elif i == "z":
+            c8 = c8 + "     "
+            c7 = c7 + "     "
+            c6 = c6 + " ____"
+            c5 = c5 + "|_  /"
+            c4 = c4 + " / / "
+            c3 = c3 + "/___|"
+            c2 = c2 + "     "
+            c1 = c1 + "     "
+        elif i == "Z":
+            c8 = c8 + " ______"
+            c7 = c7 + "|___  /"
+            c6 = c6 + "   / / "
+            c5 = c5 + "  / /  "
+            c4 = c4 + " / /__ "
+            c3 = c3 + "/_____|"
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "x":
+            c8 = c8 + "       "
+            c7 = c7 + "       "
+            c6 = c6 + "__  __ "
+            c5 = c5 + "\ \/ / "
+            c4 = c4 + " >  <  "
+            c3 = c3 + "/_/\_\ "
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "X":
+            c8 = c8 + "__   __ "
+            c7 = c7 + "\ \ / / "
+            c6 = c6 + " \ V /  "
+            c5 = c5 + "  > <   "
+            c4 = c4 + " / . \  "
+            c3 = c3 + "/_/ \_\ "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "y":
+            c8 = c8 + "       "
+            c7 = c7 + "       "
+            c6 = c6 + " _   _ "
+            c5 = c5 + "| | | |"
+            c4 = c4 + "| |_| |"
+            c3 = c3 + " \__, |"
+            c2 = c2 + "  __/ |"
+            c1 = c1 + " |___/ "
+        elif i == "Y":
+            c8 = c8 + "__     __"
+            c7 = c7 + "\ \   / /"
+            c6 = c6 + " \ \_/ / "
+            c5 = c5 + "  \   /  "
+            c4 = c4 + "   | |   "
+            c3 = c3 + "   |_|   "
+            c2 = c2 + "         "
+            c1 = c1 + "         "
+        elif i == " " :
+            c8 = c8 + "      "
+            c7 = c7 + "      "
+            c6 = c6 + "      "
+            c5 = c5 + "      "
+            c4 = c4 + "      "
+            c3 = c3 + "      "
+            c2 = c2 + "      "
+            c1 = c1 + "      "
+        elif i == "." :
+            c8 = c8 + "   "
+            c7 = c7 + "   "
+            c6 = c6 + "   "
+            c5 = c5 + "   "
+            c4 = c4 + " _ "
+            c3 = c3 + "(_)"
+            c2 = c2 + "   "
+            c1 = c1 + "   "
+        elif i == "`" or i == "'" :
+            c8 = c8 + " _  "
+            c7 = c7 + "\_\ "
+            c6 = c6 + "    "
+            c5 = c5 + "    "
+            c4 = c4 + "    "
+            c3 = c3 + "    "
+            c2 = c2 + "    "
+            c1 = c1 + "    "
+        elif i == "^" :
+            c8 = c8 + "  /  \  "
+            c7 = c7 + " /_/\_\ "
+            c6 = c6 + "        "
+            c5 = c5 + "        "
+            c4 = c4 + "        "
+            c3 = c3 + "        "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "," :
+            c8 = c8 + "   "
+            c7 = c7 + "   "
+            c6 = c6 + "   "
+            c5 = c5 + "   "
+            c4 = c4 + " _ "
+            c3 = c3 + "/_/"
+            c2 = c2 + "   "
+            c1 = c1 + "   "
+        elif i == ";" :
+            c8 = c8 + "    "
+            c7 = c7 + "  _ "
+            c6 = c6 + " (_)"
+            c5 = c5 + "    "  
+            c4 = c4 + "  _ "
+            c3 = c3 + " /_/"
+            c2 = c2 + "    "
+            c1 = c1 + "    "
+        elif i == ":":
+            c8 = c8 + "   "
+            c7 = c7 + " _ "
+            c6 = c6 + "(_)"
+            c5 = c5 + "   "
+            c4 = c4 + " _ "
+            c3 = c3 + "(_)"
+            c2 = c2 + "   "
+            c1 = c1 + "   "
+        elif i == "!" :
+            c8 = c8 + " _ "
+            c7 = c7 + "| |"
+            c6 = c6 + "| |"
+            c5 = c5 + "|_|"
+            c4 = c4 + " _ "
+            c3 = c3 + "(_)"
+            c2 = c2 + "   "
+            c1 = c1 + "   "
+        elif i == "?" :
+            c8 = c8 + "  ____  " 
+            c7 = c7 + " / _  \ "
+            c6 = c6 + "/_| | | "
+            c5 = c5 + "    |_| "
+            c4 = c4 + "     _  "
+            c3 = c3 + "    (_) "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "$":
+            c8 = c8 + "        "
+            c7 = c7 + "        "
+            c6 = c6 + " _||__  "
+            c5 = c5 + "/ ||__| "
+            c4 = c4 + "\_||_ \ "
+            c3 = c3 + "|_||__/ "
+            c2 = c2 + "  ||    "
+            c1 = c1 + "        "
+        elif i == "%":
+            c8 = c8 + "        "
+            c7 = c7 + " _   // "
+            c6 = c6 + "(_) //  "
+            c5 = c5 + "   // _ "
+            c4 = c4 + "  // (_)"
+            c3 = c3 + " //     "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "-":
+            c8 = c8 + "        "
+            c7 = c7 + "        "
+            c6 = c6 + "        "
+            c5 = c5 + " ______ "
+            c4 = c4 + "|______|"
+            c3 = c3 + "        "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "=":
+            c8 = c8 + "        "
+            c7 = c7 + " ______ "
+            c6 = c6 + "|______|"
+            c5 = c5 + " ______ "
+            c4 = c4 + "|______|"
+            c3 = c3 + "        "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "+":
+            c8 = c8 + "       "
+            c7 = c7 + "   _   "
+            c6 = c6 + " _| |_ "
+            c5 = c5 + "|_   _|"
+            c4 = c4 + "  |_|  "
+            c3 = c3 + "       "
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "_":
+            c8 = c8 + "        "
+            c7 = c7 + "        "
+            c6 = c6 + "        "
+            c5 = c5 + "        "
+            c4 = c4 + " ______ "
+            c3 = c3 + "|______|"
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "[":
+            c8 = c8 + " ___ "
+            c7 = c7 + "|  _|"
+            c6 = c6 + "| |  "
+            c5 = c5 + "| |  "
+            c4 = c4 + "| |  "
+            c3 = c3 + "| |_ "
+            c2 = c2 + "|___|"
+            c1 = c1 + "     "
+        elif i == "]":
+            c8 = c8 + " ___ "
+            c7 = c7 + "|_  |"
+            c6 = c6 + "  | |"
+            c5 = c5 + "  | |"
+            c4 = c4 + "  | |"
+            c3 = c3 + " _| |"
+            c2 = c2 + "|___|"
+            c1 = c1 + "     "
+        elif i == "(":
+            c8 = c8 + "  __ "
+            c7 = c7 + " / / "
+            c6 = c6 + "| |  "
+            c5 = c5 + "| |  "
+            c4 = c4 + "| |  "
+            c3 = c3 + "| |  "
+            c2 = c2 + " \_\ "
+            c1 = c1 + "     "
+        elif i == ")":
+            c8 = c8 + "__  "
+            c7 = c7 + "\ \ "
+            c6 = c6 + " | |"
+            c5 = c5 + " | |"
+            c4 = c4 + " | |"
+            c3 = c3 + " | |"
+            c2 = c2 + "/_/ "
+            c1 = c1 + "    "
+        elif i == "0" :
+            c8 = c8 + " _____ "
+            c7 = c7 + "|  _  |"
+            c6 = c6 + "| |/' |"
+            c5 = c5 + "|  /| |"
+            c4 = c4 + "\ |_/ /"
+            c3 = c3 + " \___/ "
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "1" :
+            c8 = c8 + " __  "
+            c7 = c7 + "/  | "
+            c6 = c6 + "`| | "
+            c5 = c5 + " | | "
+            c4 = c4 + "_| |_"
+            c3 = c3 + "\___/"
+            c2 = c2 + "     "
+            c1 = c1 + "     "
+        elif i == "2" :
+            c8 = c8 + " _____  "
+            c7 = c7 + "/ __  \ "
+            c6 = c6 + "`' / /' "
+            c5 = c5 + "  / /   "
+            c4 = c4 + "./ /___ "
+            c3 = c3 + "\_____/ "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "3" :
+            c8 = c8 + " _____  "
+            c7 = c7 + "|____ | "
+            c6 = c6 + "    / / "
+            c5 = c5 + "    \ \ "
+            c4 = c4 + ".___/ / "
+            c3 = c3 + "\____/  "
+            c2 = c2 + "        "
+            c1 = c1 + ""
+        elif i == "4" :
+            c8 = c8 + "   ___ "
+            c7 = c7 + "  /   |"
+            c6 = c6 + " / /| |"
+            c5 = c5 + "/ /_| |"
+            c4 = c4 + "\___  |"
+            c3 = c3 + "    |_/"
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "5" :
+            c8 = c8 + " _____  "
+            c7 = c7 + "|  ___| "
+            c6 = c6 + "|___ \  "
+            c5 = c5 + "    \ \ "
+            c4 = c4 + "/\__/ / "
+            c3 = c3 + "\____/  "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "6" :
+            c8 = c8 + "  ____  "
+            c7 = c7 + " / ___| "
+            c6 = c6 + "/ /___  "
+            c5 = c5 + "| ___ \ "
+            c4 = c4 + "| \_/ | "
+            c3 = c3 + "\_____/ "
+            c2 = c2 + "        "
+            c1 = c1 + "        "
+        elif i == "7" :
+            c8 = c8 + " ______"
+            c7 = c7 + "|___  /"
+            c6 = c6 + "   / / "
+            c5 = c5 + "  / /  "
+            c4 = c4 + "./ /   "
+            c3 = c3 + "\_/    "
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "8" :
+            c8 = c8 + " _____ "
+            c7 = c7 + "|  _  |"
+            c6 = c6 + " \ V / "
+            c5 = c5 + " / _ \ "
+            c4 = c4 + "| |_| |"
+            c3 = c3 + "\_____/"
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        elif i == "9" :
+            c8 = c8 + " _____ "
+            c7 = c7 + "|  _  |"
+            c6 = c6 + "| |_| |"
+            c5 = c5 + "\____ |"
+            c4 = c4 + ".___/ /"
+            c3 = c3 + "\____/ "
+            c2 = c2 + "       "
+            c1 = c1 + "       "
+        else :
+            cerror.add(i)
+    print(c8)
+    print(c7)
+    print(c6)
+    print(c5)
+    print(c4)
+    print(c3)
+    print(c2)
+    print(c1)
+    if len(cerror) != 0:
+        print("")
+        print("")
+        print("The character(s)", cerror," weren't recognised by the programm.")
+            
+def QAsciiArtText():
+    print("AsciiArtText(text) transforms text into an ascii art.")
+    
+    
+def factorielle(x):
+  if x == 0:
+        return 1
+  if x > 0:
+        return x*factorielle(x-1)
+    
+def Factorial(number):
+    result = factorielle(number)
+    print("The factorial of", number,"equals", result)
+    print(number, "! =", result)
+
+def QFactorial():
+    print("Factorial(number) gives the factorial of the number")
+
+def Add(somme):
+    result = 0
+    liste_nombres = ""
+    somme_ecrite = ""
+    for i in somme:
+        result = result + float(i)
+        liste_nombres = liste_nombres + i+", "
+        if float(i) >= 0:
+            somme_ecrite = somme_ecrite + i+" + "
+        else :
+            somme_ecrite = somme_ecrite[0:-2] + "- " + str(abs(float(i))) + " + "
+    liste_nombres = liste_nombres[0:len(liste_nombres)-2]
+    if somme_ecrite[-2] == "+":
+        somme_ecrite = somme_ecrite[0:-3]
+    print("The sommation of", liste_nombres, "equals", result)
+    print(somme_ecrite,"=", result)
+
+def QAdd():
+    print("Add(number1, number2, number3, ...) adds all the numbers")
+
+def Multiply(somme):
+    result = 1
+    liste_nombres = ""
+    produit_ecrit = ""
+    for i in somme :
+        result = result * float(i)
+        liste_nombres = liste_nombres + i + ", "
+        produit_ecrit = produit_ecrit + i + " * "
+    liste_nombres = liste_nombres[0:-2]
+    produit_ecrit = produit_ecrit[0:-3]
+    print("The product of", liste_nombres,"equals", result)
+    print(produit_ecrit, "=", result)
+
+def QMultiply():
+    print("Multiply(number1, number2, number3, ...) multiplies all the numbers")
+
+    
+def Divide(number1, number2):
+    if number2 == 0:
+        print("Cannot divid by 0")
+    else :
+        result = number1/number2
+        print("The division of ", number1," by ", number2," equals", result)
+        print(number1,"/", number2, "=", result)
+
+
+def QDivide():
+    print("Divide(number1, number2) divides number1 by number2")
+
+
+def partitions(number):
+    number = int(number)
+    res = []
+    result = set()
+    result.add((number, ))
+    for x in range(1, number):
+        for y in partitions(number - x):
+            result.add(tuple(sorted((x, ) + y)))
+    return result
+
+def Partition(number):
+    result = partitions(number)
+    print("There are",len(result),"partitions of the integer",number,"and are the following:")
+    print(result)
+
+def QPartition():
+    print("Partition(Integer) gives all the partitions of the integer.")
+
+def Transcript(adn):
+    result = ""
+    count = 0
+    for i in adn:
+        if i == "A" or i == "a":
+            result = result + "U"
+        elif i == "C" or i == "c":
+            result = result + "G"
+        elif i == "G" or i == "g":
+            result = result + "C"
+        elif i == "T" or i == "t":
+            result = result + "A"
+        else :
+            print("Your sequence contains the character",i,"which is not allowed")
+            count = 1
+            break
+    if count == 0:
+        print("The RNA sequence of your DNA sequence is")
+        print(result)
+
+def QTranscript():
+    print("Transcript(DNA) transcripts the DNA into RNA.")
+
+
+def Translate(arn):
+    c = ""
+    m = 0
+    protein = ""
+    for i in arn:
+        c = c + i
+        if len(c) == 3:
+            if c[0:2].lower() == "gg":
+                protein = protein + "Gly "
+            elif c.lower() == "gaa" or c.lower()== "gag":
+                protein = protein + "Glu "
+            elif c.lower() == "gac" or c.lower() == "gau":
+                protein = protein + "Asp "
+            elif c[0:2].lower() == "gc":
+                protein = protein + "Ala "
+            elif c[0:2].lower() == "gu":
+                protein = protein + "Val "
+            elif c.lower() == "aga" or c.lower() == "agg":
+                protein = protein + "Arg "
+            elif c.lower() == "agc" or c.lower() == "agu":
+                protein = protein + "Ser "
+            elif c.lower() == "aag" or c.lower() == "aaa":
+                protein = protein + "Lys "
+            elif c.lower() == "aac" or c.lower() == "aau":
+                protein = protein + "Asn "
+            elif c[0:2].lower() == "ac":
+                protein = protein + "Thr "
+            elif c.lower() == "aug":
+                protein = protein + "Met "
+            elif c.lower() == "aua" or c.lower() == "auc" or c.lower() == "auu":
+                protein = protein + "Ile "
+            elif c[0:2].lower() == "cg":
+                protein = protein + "Arg "
+            elif c.lower() == "cag" or c.lower() == "caa":
+                protein = protein + "Gln "
+            elif c.lower() == "cac" or c.lower() == "cau":
+                protein = protein + "His "
+            elif c[0:2].lower() == "cc":
+                protein = protein + "Pro "
+            elif c[0:2].lower() == "cu":
+                protein = protein + "Leu "
+            elif c.lower() == "ugg":
+                protein = protein + "Trp "
+            elif c.lower() == "uga":
+                protein = protein + "Stop "
+            elif c.lower() == "ugc" or c.lower() == "ugu":
+                protein = protein + "Cys "
+            elif c.lower() == "uag":
+                protein = protein + "Stop "
+            elif c.lower() == "uaa":
+                protein = protein + "Stop "
+            elif c.lower() == "uac" or c.lower() == "uau":
+                protein = protein + "Tyr "
+            elif c[0:2].lower() == "uc":
+                protein = protein + "Ser "
+            elif c.lower() == "uuu" or c.lower() == "uuc":
+                protein = protein + "Phe "
+            elif c.lower() == "uua" or c.lower() == "uug":
+                protein = protein + "Glu "
+            else :
+                print("Your sequence contains an error, the codon",c,"doesn't exists") 
+                m = 1
+                break
+            c = ""
+    if m == 0:
+        print("The proteinal translation of your sequence is")
+        print(protein)
+
+def QTranslate():
+    print("Translate(ARN) translates the ARN into Protein Code")
+
+
+def Complementar(sequence, type):
+    c = ""
+    m = 0
+    if type.lower() == "rna" or type.lower() == " rna" or type.lower() == " dna" or type.lower() == "dna":
+        m = 0
+    else :
+        m = 1
+        print("This type doesn't exist : please choose betwenn DNA and RNA")
+    for i in sequence:
+        if i == "A" or i == "a":
+            if type.lower() == "rna" or type.lower() == " rna":
+                c = c + "U"
+            elif type.lower() == "dna" or type.lower() == " dna":
+                c = c + "T"
+        elif i == "C" or i == "c":
+            c = c + "G"
+        elif i == "G" or i == "g":
+            c = c + "C"
+        elif i == "T" or i == "t":
+            if type.lower() == "rna" or type.lower() == " rna":
+                print("Error : Thymin doesn't exists in RNA")
+                m = 1
+                break
+            else :
+                c = c + "A"
+        elif i == "u" or i == "U":
+            if type.lower() == "dna" or type.lower() == " dna":
+                print("Error : Uracil doesn't exists in DNA")
+                m = 1
+                break
+            else :
+                c = c + "A"
+        else :
+            print("Your sequence contains the character",i,"which is not allowed")
+            m = 1
+            break
+    if m == 0:
+        print("The complementar of your",type,"sequence is")
+        print(c)
+
+def QComplementar():
+    print("Complementar(sequence, type(DNA/RNA)) gives the complementar sequence to 'sequence'")
+
+
+def Length(x):
+    print("The length of your string is", len(x))
+
+def QLength():
+    print("Length(str) gives the length of the string")
+
+
+def AsciiTable(n):
+    print("Here is the Ascii table until the ",n,"-th character (non printable characters will appear blank) :")
+    print("SPACE  32")
+    for i in range(33, n):
+        if i == 127 :
+            print("~~~~~~~~~")
+            print("Between 127 and 160 are not printable elements")
+            print("~~~~~~~~~")
+        if i < 127 or i > 160:
+            print(chr(i),"    ",i)
+
+def QAsciiTable():
+    print("AsciiTable(number) prints the Ascii table until the number-th character of the table, without some non-printable elements.")
+
+
+def AsciiChr(x):
+    if x == 32:
+        print("The character SPACE is the 32-th character of the Ascii table.")
+    else :
+        if (x < 127 and x > 31) or (x > 160 ):
+            print("The character",chr(x),"is the",x,"-th character of the Ascii table.")
+        else :
+            print("The",x,"-th character of the Ascii table is not printable.")
+
+def QAsciiChr():
+    print("AsciiChr(number) prints out the number-th character of the Ascii table.")
+
+
+def AsciiPos(x):
+    print("The character",x,"is the",ord(x),"-th character of the Ascii table.")
+
+def QAsciiPos():
+    print("AsciiPos(character) give the position of the character within the Ascii table")
+
+
+def MultipleQ(x,y):
+    if x % y == 0:
+        print("True :",x," is a multiple of",y,".")
+    else :
+        print("False :",x," isn't a multiple of",y,".")
+
+def QMultipleQ():
+    print("MultipleQnumber1, number2) asnwers True if number1 is a multiple of number2.")
+
+
+def crible(n):
+    x = 1
+    crible = []
+    list = [0] * n
+    for i in range(int(sqrt(n))):
+        x = x + 1
+        y = x * x
+        if list[i] == 0:
+            while y < len(list):
+                list[y-2] = 1
+                y = y + x
+    list[n-1] = 1
+    list[n-2] = 1
+    v = 2
+    for i in list :
+        if i == 0:
+            crible.append(int(v))
+        v = v + 1
+    return crible
+
+
+def Pi(n):
+    x = len(crible(n))
+    print("There are",x,"prime numbers smaller than",n,".")
+    print("Pi(",n,") =",x)
+
+def QPi():
+    print("Pi(number) returns how many prime numbers are smaller than number")
+
+
+def Heratosthenes(n):
+    print("Here is the Heratosthenes' sieve until",n,":")
+    print(crible(n))
+
+def QHeratosthenes():
+    print("Heratosthenes(number) does the Heratosthenes sieve until number")
+
+    
+def Goldbach(x):
+    if x % 2 == 0 and x > 2:
+        d = crible(x)
+        m = set()
+        for i in d:
+            if d.count(x-i)> 0:
+                m.add(tuple(sorted((i, ) + (x-i,))))
+        if len(m) > 0:
+            print(x,"is true by Goldbach, by the following sums:")
+            print(m)
+        else:
+            print("Congratulations, you'll get very famous, because", x,"doesn't respect the conjecture of Goldbach.")
+    else :
+        print("Your number to test isn't appropriated (must be greater than two and odd).")
+
+def QGoldbach():
+    print("Goldbach(number) testes if number respects the Goldbach conjecture.")
+
+
+def PrimeQ(n):
+    if crible(n+1).count(n) > 0:
+        print("True,",n,"is a prime number")
+    else:
+        print("False,",n,"isn't a prime number")
+
+def QPrimeQ():
+    print("PrimeQ(number) returns True if number is prime, False else.")
+
+
+def PrimeFactor(n):
+    k = set()
+    s = []
+    number = n
+    d = crible(int(n/2)+1)
+    premiers = ""
+    z = -1
+    while z < len(d):
+        z = z + 1
+        if n % d[z-1] == 0:
+            k.add(d[z-1])
+            s.append(d[z-1])
+            n = int(n/(d[z-1]))
+            z = 0
+    for i in k:
+        u = s.count(i)
+        if u == 1:
+            premiers = premiers + str(i) + " * "
+        else :
+            premiers = premiers +str(i)+ "^" + str(u) + " * "
+        
+    print("Here is the prime factorisation of",number,":")
+    print(premiers[0:-3],"=",number)
+
+def QPrimeFactor():
+    print("PrimeFactor(number) gives the prime factorisation of number")
+
+
+def Divisors(x):
+    x = int(x)
+    c = []
+    for i in range(1,x+1):
+        if x%i == 0:
+            c.append(i)
+    print("Here are the",len(c),"integer divisors of",x,":")
+    print(c)
+
+def QDivisors():
+    print("Divisors(number) gives all the integer divisors of number")
+
+
+def Modulo(a,b):
+    d = a%b
+    print("The modulo of",a,"by",b,"equals",d)
+    print(a,"mod",b,"=",d)
+
+def QModulo():
+    print("Modulo(number1, number2) gives the modulo of number1 by number2")
+
+
+def Euclidian(a,b):
+    if b == 0:
+        print("Cannot divide by 0")
+    else :
+        d = a%b
+        c =((a-(d))/b)
+        print("The integer division of",a,"by",b," has a quotient of",c,"and a remainder of",d,".")
+        print(b,"*",c,"+",d,"=",a,"%")
+
+def QEuclidian():
+    print("Euclidian(number1, number2) does the euclidian division of number1 by number2.")
+
+
+def Probability(a,b):
+    d = b/a * 100
+    print("The probability of your event is of",d,"%.")
+    print("Prob(",a,",",b,") =",d,"%")
+
+def QProbability():
+    print("Probability(Possibilities, cases) gives the probability of cases to happen.")
+
+
+def CesarEncrypt(message,key):
+    encrypt = ""
+    key = ord(key) - 96
+    for i in message:
+        if i != " ":
+            i = chr(((ord(i) - 97 + key )%26 + 97 - 32))
+        encrypt = encrypt + i
+    print("Here is you message encrypted by the Cesar methode:")
+    print(encrypt)
+
+def QCesarEncrypt():
+    print("CesarEncrypt(message, key) encrypts message with the key by the methode of Cesar")
+
+
+def CesarDecrypt(message,key):
+    encrypt = ""
+    key = ord(key) - 96
+    for i in message:
+        if i != " ":
+            i = chr(((ord(i) - 65 - key )%26 + 65 + 32))
+        encrypt = encrypt + i
+    print("Here is you message decrypted by the Cesar methode:")
+    print(encrypt)
+
+def QCesarDecrypt():
+    print("CesarDecrypt(message, key) decrypts message with the key by the methode of Cesar")
+
+
+def Average(numbers):
+    result = 0
+    affiche_list = ""
+    affiche_result = ""
+    for i in numbers:
+        result = result + float(i)
+        affiche_list = affiche_list + i+", "
+        if float(i) >= 0:
+            affiche_result = affiche_result + i+" + "
+        else :
+            affiche_result = affiche_result[0:-2] + "- " + str(abs(float(i))) + " + "
+    affiche_list = affiche_list[0:-2]
+    if affiche_result[-2] == "+":
+        affiche_result = affiche_result[0:-3]
+    length = len(numbers)
+    print("The average of", affiche_list, "equals", result/length)
+    print("(",affiche_result,") /",length,"=",result)
+
+def QAverage():
+    print("Average(number1, number2, number3,...) does the average of all the numbers.")
+
+
+def Median(numbers):
+    length = len(numbers)
+    affiche_list = ""
+    if length % 2 != 0:
+        result = numbers[int(length/2)]
+    else:
+        result = (float(numbers[int((length/2)+0.5)]) + float(numbers[int((length/2)-0.5)]))/2
+    for i in numbers:
+        affiche_list = affiche_list + i + ", "
+    affiche_list = affiche_list[0:-2]
+    print("The median of",affiche_list,"is",result)
+
+def QMedian():
+    print("Median(number1, number2, number3,...) does the median of all the numbers.")
+
+
+def Polar(coord):
+    c = ""
+    for i in coord:
+        c = c + str(i) + ";"
+    c = c[0:-1]
+    if len(coord) == 1:
+        print("The polar coordinate of (",c,") is (",coord[0],")")
+    elif len(coord) == 2:
+        x = coord[0]
+        y = coord[1]
+        r = sqrt((x**2)+(y**2))
+        angle = 2 * atan(y/(x + r))
+        print("The polar coordinates of (",c,") are (",r,";",(angle * (180/pi)),")")
+    elif len(coord) == 3:
+        x = coord[0]
+        y = coord[1]
+        z = coord[2]
+        r = sqrt((x**2)+(y**2)+(z**2))
+        angle1 = acos(z/r)
+        if x == y and y == 0:
+            angle2 = pi/2
+        elif x + sqrt((x**2)+(y**2)) == 0:
+            angle2 = -(pi)
+        else :
+            angle2 = 2 * atan(y/(x + sqrt((x**2)+(y**2))))
+        print("The polar coordinates of (",c,") are (",r,";",(angle2 * (180/pi)),";",90 - (angle1 * (180/pi)),")")
+    elif len(coord) > 3:
+        print("Only coordinates of dimension between one and three can be taken.")
+
+def QPolar():
+    print("Polar(x,(y),(z)) gives the polar coordinates (radius,longitude, latitude) of the cartesian coordinates (y and  z are optional)")
+        
+        
+
+def Cartesian(coord):
+    c = ""
+    for i in coord:
+        c = c + str(i) + ";"
+    c = c[0:-1]
+    if len(coord) == 1:
+        print("The cartesian coordinate of (",c,") is (",coord[0],")")
+    elif len(coord) == 2:
+        r = coord[0]
+        angle = coord[1]
+        x = r * cos((angle*pi)/180)
+        y = r * sin((angle*pi)/180)
+        print("The cartesian coordinates of (",c,") are (",x,";",y,")")
+    elif len(coord) == 3:
+        r = coord[0]
+        angle1 = coord[1]
+        angle2 = coord[2]
+        x = r * cos((angle2 * pi)/180) * cos((angle1 * pi)/180)
+        y = r * cos((angle2 * pi)/180) * sin((angle1 * pi)/180)
+        z = r * sin((angle2 * pi)/180)
+        print("The cartesian coordinates of (",c,") are (",x,";",y,";",z,")")
+
+def QCartesian():
+    print("Cartesian(radius,(longitude),(latitude)) gives the cartesian coordinates (x,y,z) of the polar coordinates (longitude and  latitude are optional)")
+
+
+def Arrangement(k,n):
+    result = (factorielle(n))/(factorielle(n - k))
+    print("There are",result,"arrangements of",k,"taken in",n,".")
+    print("A(",k,",",n,") =",result)
+
+def QArrangement():
+    print("Arrangement(k,n) gives the number of arrangements of k taken in n.")
+
+
+def Combination(k,n):
+    result = (factorielle(n))/((factorielle(n - k))*factorielle(k))
+    print("There are",result,"combinations of",k,"taken in",n,".")
+    print("C(",k,",",n,") =",result)
+
+def QCombination():
+    print("Combination(k,n) gives the number of combinations of k taken in n.")
+
+
+def Expanse(n):
+    c = ""
+    m = factorielle(n)
+    for i in range(n+1):
+        if i == 0:
+            c = c + "a^" + str(n) + " + "
+        elif i == n:
+            c = c + "b^" + str(n)
+        else :
+            c = c + str(int(m/((factorielle(n - i))*factorielle(i)))) + "*" + "a^" + str(int(n-i)) + "*" + "b^" + str(int(i)) + " + "
+    print("The expanse of (a + b)^",n,"is")
+    print(c)
+
+def QExpanse():
+    print("Expanse(number) gives the expanded formula of (a + b)^number")
+
+
+def RationalZeros(factors,equation):
+    result = []
+    if factors[-1] == 0:
+        factors = factors[0:-1]
+        result.append(0)
+    if len(factors) % 2 == 0 :
+        if result.count(0) == 0:
+            result.append(0)
+        i = 1
+        substract = factors[-1]
+        while i < len(factors):
+            factors[i] = factors[i] - substract
+            i = i + 2
+        factors = factors[0:-1]
+    a0 = factors[-1]
+    an = factors[0]
+    Da0 = []
+    Dan = []
+    for i in range(abs(a0)):
+        i = i + 1
+        if a0 % i == 0:
+            Da0.append(i)
+    for i in range(abs(an)):
+        i = i + 1
+        if an%i == 0:
+            Dan.append(i)
+    Posibilites = set()
+    j = 0
+    while j < len(Da0):
+        for i in Dan:
+            Posibilites.add(float(Da0[j]/i))
+            Posibilites.add(-(float((Da0[j]/i))))
+        j = j + 1
+    for i in Posibilites:
+        d = 0
+        c = 0
+        while d < len(factors):
+            if d != len(factors)-1:
+                c = c + factors[d] * i**(factors[d+1])
+            else :
+                c = c + factors[d]
+            d = d + 2
+        if c < 0.0001 and c > -0.0000001:
+            result.append(i)
+    print(equation,"has the following rational zeros :")
+    print(result)
+
+def QRationalZeros():
+    print("RationalZeros(ax^n + bx^m ...) gives all the rational zeros of the polynom (the factors a,b,... must be integers).")
+
+
+def PolynomialTable(function,begin,end,pas,equation):
+    print("Here is the table of the polynom",equation,"between",begin,"and",end,"with a pas of",pas,":")
+    if len(function) % 2 == 0:
+        function.append(0)
+    i = begin
+    while i <= end:
+        d = 0
+        c = 0
+        while d < len(function):
+            if d != len(function)-1:
+                c = c + factors[d] * i**(factors[d+1])
+            else :
+                c = c + factors[d]
+            d = d + 2
+        print("P(",i,") =",c)
+        i = i + pas
+
+def QPolynomialTable():
+    print("PolynomialTable(polynom,begin,end,pas) gives the table of the function from begin to end with a pas of pas. The polynom must be in the form ax^n + bx^m ...")
+
+def Ph(concentration):
+    ph = -1 * (log(concentration))
+    print("The ph of your liquid is", ph, ".")
+    if ph > 10:
+        print("Which makes it very basic.")
+    elif ph > 7:
+        print("Which makes it basic.")
+    elif ph < 1:
+        print ("Which makes it very acid.")
+    elif ph < 7 and ph > 1:
+        print("Which makes it acid.")
+    elif ph == 7:
+        print("Which makes it neutral.")
+
+def QPh():
+    print("Ph(H+ Concentration of the liquid in moles per liter) gives the ph of the liquid.")
+
+def Viete(factors,equation):
+    result = ""
+    discriminant = (factors[1]**2) - 4 * factors[0] * factors[2]
+    if discriminant > 0:
+        result = result + str(((-factors[1]) + sqrt(discriminant))/(2*factors[0])) + ", "
+        result = result + str(((-factors[1]) - sqrt(discriminant))/(2*factors[0]))
+    elif discriminant == 0:
+        result = result + str((-factors[1])/(2 * factors[0]))
+    elif discriminant < 0 :
+        result = result + str((-factors[1])/(2*factors[0])) + " + i*" + str(sqrt(-(discriminant))/(2*factors[0])) + ", "
+        result = result + str((-factors[1])/(2*factors[0])) + " - i*" + str(sqrt(-(discriminant))/(2*factors[0]))
+    print("The zeros of",equation,"are :")
+    print(result)
+
+def QViete():
+    print("Viete(ax^2 + bx^1 + c) gives the zeros of the polynom.")
+
+def LeapQ(year):
+    isleap = "not a leap year."
+    if year % 4 == 0:
+        if year % 100 == 0:
+            if year % 400 == 0:
+                isleap = "a leap year."
+        else :
+            isleap = "a leap year"
+    print("The year",year,"is",isleap)
+
+def QLeapQ():
+    print("LeapQ(year) indicates if year is a leap year or not.")
+
+def date_day(q,m,year):
+    b = ""
+    if m == 1:
+        m = 13
+        year -= 1
+    elif m == 2:
+        m = 14
+        year -= 1
+    K = year % 100
+    J = year // 100
+    f = (q + int(13 * (m + 1) / 5.0) + K + int(K / 4.0))
+    fg = f + int(J / 4.0) - 2 * J
+    fj = f + 5 - J
+    if year > 1582:
+        h = fg % 7
+    else:
+        h = fj % 7
+    if h == 0:
+        h = 7
+    if h == 1:
+        b = "Sunday"
+    if h == 2:
+        b = "Monday"
+    if h == 3:
+        b = "Tuesday"
+    if h == 4:
+        b = "Wednesday"
+    if h == 5:
+        b = "Thursday"
+    if h == 6:
+        b = "Friday"
+    if h == 7:
+        b = "Saturday"
+    return b
+                
+
+def Date():
+    t = datetime.today()
+    day = t.day
+    month = t.month
+    year = t.year
+    jour = date_day(day,month,year)
+    mois = ["January","February","March","April","May","June","July","August","September","Oktober","November","December"]
+    month = mois[month-1]
+    print("Today is",jour,"the",day,"-th of",month,year,".")
+
+def QDate():
+    print("Date(): gives the date of today.")
+
+
+def Time():
+    t = datetime.today()
+    hour = t.hour
+    minute = t.minute
+    second = t.second
+    print("The exact time (following your computer) is",hour,":",minute,":",second)
+
+def QTime():
+    print("Time() gives the exact time at the moment you press enter.")
+
+
+def Day(day,m,year):
+    mois = ["January","February","March","April","May","June","July","August","September","Oktober","November","December"]
+    numbers = ["1","2","3","4","5","6","7","8","9","10","11","12"]
+    if numbers.count(m) > 0:
+        month = mois[int(m)-1]
+    elif mois.count(m) > 0:
+        month = m
+        m = numbers[mois.index(m)]
+    print("The",day,"-th of",month,year,"is a",date_day(day,int(m),year))
+
+def QDay():
+    print("Day(day,month,year) gives the day of the date. The month can be given as a number or a name.")
+    
+
+
+#def Index():
+
+
+
+
+
+
+
+
+
+
+
+def Help():
+    print("Every command in Auto-Math begin with a capitalized letter and ends in the two braces (), which can, if needed, be seperated by arguments for the command. To execute a command, press enter.")
+    print("")
+    print("Every command has a description. To consult it, just type the command with a Q in the begining and no argument between the braces.")
+    print("")
+    print("The commande Index() prints the list of commands, however, sub-lists exist, ordered by topic.")
+    print("")
+    print("The sub-lists allows you to search a command by its domain. The sub-lists are:")
+    print("")
+    print("Biology, Calendar, Chemistry, Cryptology, Image, Math, MathBasic, MathAdvanced, Physics, Text, Trigonometry")
+    print("")
+    print("To access a sub-list, just type the name of it and add () at the end.")  
+
+def Biology():
+    print("Available functions are : Transcript, Translate, Complementar")
+
+def QBiology():
+    print("Biology() prints a list of commands that concern biology")
+
+def Physics():
+    print("Available functions are : Constant(physics)")
+
+def QPhysics():
+    print("Physics() prints a list of commands that concern physics.")
+
+def Chemistry():
+    print("Available functions are : Ph")
+
+def QChemistry():
+    print("Chemistry() prints a list of commands that concern chermistry.")
+
+def Math():
+    print("Available functions are : Add, Multiply, Divide, Logarithm, LogarithmDecimal, LogarithmNatural,Factorial, Root, Sqrt, Cos, Sin, Tan, Cot, Constant(mathematics), Partition, MultipleQ, Goldbach, Heratosthenes, Pi, PrimeFactor, Divisors, Euclidian, PrimeQ, Modulo, Probability, Average, Median, Polar, Cartesian, Arrangement, Combination, RationalZeros, Expanse, PolynomialTable, Viete")
+
+def QMath():
+    print("Math() prints a list of all mathematical commands.")
+
+def MathBasic():
+    print("Available functions are : Add, Multiply, Divide, Logarithm, LogarithmDecimal, LogarithmNatural, Root, Sqrt, Cos, Sin, Tan, Cot, Factorial, Euclidian, Modulo, Probability, Average, Median, Polar, Cartesian, Arrangement, Combination, PolynomialTable")
+
+def QMathBasic():
+    print("MathBasic() prints a list of mathematical commands that are simple calculus.")
+
+def MathAdvanced():
+    print("Available functions are : Constant(mathematics), Partition, MultipleQ, Goldbach, Heratosthenes, Pi, PrimeFactor, Divisors, PrimeQ, RationalZeros, Expanse, Viete")
+
+def QMathAdvanced():
+    print("MathAdvanced() prints a list of mathematical commands that are complex algorithms.")
+    
+def Cryptology():
+    print("Available functions are : CesarEncrypt, CesarDecrypt,")
+
+def QCryptology():
+    print("Cryptology() prints a list of commands that concern cryptology.")
+
+def Text():
+    print("Available functions are : AsciiArtText, AsciiTable, Length, AsciiChr, AsciiPos, Clear")
+
+def QText():
+    print("Text() prints a list of commands that concern the used of the shell and the Ascii characters.")
+
+def Calendar():
+    print("Available functions are : LeapQ, Date, Time, Day")
+
+def QCalendar():
+    print("Calendar() prints a list of commands that concern dates")
+
+def QImage():
+    print("Image() prints a list of commands that generate Ascii Art Images")
+
+def QHelp():
+    print("Help() gives some advices on how to use Auto-math 1.16")
+
+def QTrigonometry():
+    print("Trigonometry() prints a list of trigonometrical commands")
+
+
+
+
+
+
+
+
+
+
+
+def search_number():
+    x = int(input("\n\nQuelle est la valeur de la borne superieure?\n"))
+    q = int(input("Quelle est la valeur de la borne inferieure?\n"))
+    nbr_diviseurs = int(
+        input(
+            "Et quel est le critère de recherche (le nombre de diviseurs que le nombre doit avoir)?\n"
+        ))
+    d = x
+    if q == 1:
+        if nbr_diviseurs == 1:
+            print("Voici la liste exaustive des nombres en dessous de", x,"ayant 1 diviseurs entier :")
+        if nbr_diviseurs > 1:
+            if nbr_diviseurs > 2:
+                print("Voici la liste exaustive des nombres en dessous de", x,
+                      "ayant", nbr_diviseurs, "diviseurs entiers :")
+            if nbr_diviseurs == 2:
+                print(
+                    "Voici la liste exaustive des nombres premiers en dessous de",
+                    x, ":")
+        if nbr_diviseurs == 0:
+            print("Ça n'existe pas !!")
+    if q > 1:
+        if nbr_diviseurs == 1:
+            print("Voici la liste exaustive des nombres entre", x, "et", q,
+                  "ayant 1 diviseur entier :")
+        if nbr_diviseurs > 1:
+            if nbr_diviseurs > 2:
+                print("Voici la liste exaustive des nombres entre", x, "et", q,
+                      "ayant", nbr_diviseurs, "diviseurs entiers :")
+            if nbr_diviseurs == 2:
+                print("Voici la liste exaustive des nombres premiers entre", x,
+                      "et", q, ":")
+            if nbr_diviseurs == 0:
+                print("Ça n'existe pas !!")
+    b = 1
+    c = 0
+    z = x
+    x = x + 1
+    while x > q:
+        x = x - 1
+        a = x
+        y = x + 1
+        while y > 1:
+            y = y - 1
+            while a > 1:
+                a = a - y
+            if a == 0:
+                b = b + 1
+            a = x
+        if b == (nbr_diviseurs):
+            c = c + 1
+            print(x)
+        b = 1
+    if q == 1:
+        if nbr_diviseurs == 2:
+            if c > 1:
+                print("Ce qui nous fait un total de très exactement", c,
+                      "nombres premiers!")
+            if c == 1:
+                print(
+                    "Ce qui nous fait un total de très exactement 1 nombre premier!"
+                )
+            if c == 0:
+                print("Désolé, y'a pas de nombre premiers en dessous...")
+        if nbr_diviseurs == 1:
+            print(
+                "Ce qui nous fait un total de très exactement 1 nombre (En même temps, c'est le seul!)!"
+            )
+        if nbr_diviseurs == 0:
+            print("")
+        if nbr_diviseurs > 2:
+            if c == 1:
+                print("Ce qui nous fait un total de très exactement 1 nombre!")
+            if c > 1:
+                print("Ce qui nous fait un total de très exactement", c,
+                      "nombres!")
+            if c == 0:
+                print("Mince alors! Y'en a pas des comme ça!")
+    if q > 1:
+        if nbr_diviseurs == 2:
+            if c > 1:
+                print("Ce qui nous fait un total de très exactement", c,
+                      "nombres premiers entre", z, "et", q, "!")
+            if c == 1:
+                print(
+                    "Ce qui nous fait un total de très exactement 1 nombre premier entre,",
+                    z, "et", q, "!")
+            if c == 0:
+                print("Désolé, y'a pas de nombre premiers entre", z, "et", q,
+                      "...")
+        if nbr_diviseurs == 0:
+            print("")
+        if nbr_diviseurs > 2:
+            if c == 1:
+                print(
+                    "Ce qui nous fait un total de très exactement 1 nombre entre",
+                    z, "et", q, "!")
+            if c > 1:
+                print("Ce qui nous fait un total de très exactement", c,
+                      "nombres entre", z, "et", q, "!")
+            if c == 0:
+                print("Mince alors! Y'en a pas des comme ça!")
+
+def modulo():
+    print("\n\nX ≡ Y mod Z : cet algorithme trouve toutes les solutions de Z.\n")
+    j = int(input("X ≡ Y mod Z : veuillez donner X\n"))
+    b = int(input("X ≡ Y mod Z : veuillez donner Y\n"))
+    x = j - b
+    if x > 0:
+        list = [1]
+        a = x
+        y = x + 1
+        c = 1
+        while y > 1:
+            y = y - 1
+            while x > 1:
+                x = x - y
+            if x == 0:
+                list.append(y)
+                c = c + 1
+            x = a
+        if c == 1:
+            print("Voici la seule solution :\n\n")
+        if c > 1:
+            print("Voici les", c, "solutions :\n\n")
+        print(j, "≡", b, "mod", list)
+    if x < 0:
+        list = [-1]
+        a = x
+        y = x - 1
+        c = 1
+        while y < -1:
+            y = y + 1
+            while x < -1:
+                x = x - y
+            if x == 0:
+                list.append(y)
+                c = c + 1
+            x = a
+        if c == 1:
+            print("Voici la seule solution :\n\n")
+        if c > 1:
+            print("Voici les", c, "solutions :\n\n")
+        print(j, "≡", b, "mod", list)
+    if x == 0:
+        print("X et Y sont rigoureusement identiques, puisque", j, "=", b,
+              ".\n")
+
+
+def lottery():
+  type = input("\n\nL'ordre des chiffres importe-t-il?\n")
+  if type == "oui":
+    pos = int(input("Quel est le nombre total de numéros ?\n"))
+    tir = int(input("Quel est le nombre de numéros tirés ?\n"))
+    print("Vous avez 1 chance sur",
+                      ((factorial(pos)) / (factorial(pos - tir))))
+  if type == "non":
+      pos = int(input("Quel est le nombre total de numéros ?\n"))
+      tir = int(input("Quel est le nombre de numéros tirés ?\n"))
+      print("Vous avez 1 chance sur", ((factorial(pos)) / (
+                    (factorial(tir)) * (factorial(pos - tir)))))
+
+def weighted_average():
+  d = 0
+  o = 0
+  print("\n\nVeuillez entrer valeur par valeur, puis leur pondération\n")
+  print("Veuillez taper fin lorsque vous avez fini\n")
+  while True:
+    c = input("\nProchaine valeure?\n")
+    if c == "fin":
+        break
+    c = float(c)
+    g = float(input("Quelle pondération?\n"))
+    d = d + (c * g)
+    o = o + g
+  print("La moyenne pondérée est égale à", (d / o), ".")
+
+            
+def vector_dot():
+  t = input("\n\nQuelle dimension ?\n1 :1d\n2 :2d\n3 :3d\n4 :4d\n")
+  if t == "1":
+    x1 = float(input("Quelle est l'abscisse du premier vecteur?\n"))
+    x2 = float(input("Quelle est l'abscisse du deuxième vecteur?\n"))
+    print("Le produit scalaire de ces deux vecteurs est égal à",
+                  (x1 * x2))
+  if t == "2":
+    x1 = float(input("Quelle est l'abscisse du premier vecteur?\n"))
+    y1 = float(input("Quelle est l'ordonee du premier vecteur ?\n"))
+    x2 = float(input("Quelle est l'abscisse du deuxième vecteur?\n"))
+    y2 = float(input("Quelle est l'ordonee du deuxième vecteur ?\n"))
+    print("Le produit scalaire de ces deux vecteurs est égal à",
+                  (x1 * x2 + y1 * y2))
+  if t == "3":
+    x1 = float(input("Quelle est l'abscisse du premier vecteur?\n"))
+    y1 = float(input("Quelle est l'ordonee du premier vecteur ?\n"))
+    z1 = float(input("Quelle est l'altitude du premier vecteur ?\n"))
+    x2 = float(input("Quelle est l'abscisse du deuxième vecteur?\n"))
+    y2 = float(input("Quelle est l'ordonee du deuxième vecteur ?\n"))
+    z2 = float(input("Quelle est l'altitude du deuxième vecteur ?\n"))
+    print("Le produit scalaire de ces deux vecteurs est égal à",
+                  (x1 * x2 + y1 * y2 + z1 * z2))
+  if t == "4":
+    x1 = float(input("Quelle est l'abscisse du premier vecteur?\n"))
+    y1 = float(input("Quelle est l'ordonee du premier vecteur ?\n"))
+    z1 = float(input("Quelle est l'altitude du premier vecteur ?\n"))
+    w1 = float(input("Quelle est l'ana/kata du premier vecteur ?\n"))
+    x2 = float(input("Quelle est l'abscisse du deuxième vecteur?\n"))
+    y2 = float(input("Quelle est l'ordonee du deuxième vecteur ?\n"))
+    z2 = float(input("Quelle est l'altitude du deuxième vecteur ?\n"))
+    w2 = float(input("Quelle est l'ana/kata du deuxième vecteur ?\n"))
+    print("Le produit scalaire de ces deux vecteurs est égal à",
+                  (x1 * x2 + y1 * y2 + z1 * z2 + w1 * w2))
+
+def vector_cross():
+  t = input("\n\nQuelle dimension ?\n1 :3d\n2 :4d\n")
+  if t == "1":
+            x1 = float(input("Quelle est l'abscisse du premier vecteur?\n"))
+            y1 = float(input("Quelle est l'ordonee du premier vecteur ?\n"))
+            z1 = float(input("Quelle est l'altitude du premier vecteur ?\n"))
+            x2 = float(input("Quelle est l'abscisse du deuxième vecteur?\n"))
+            y2 = float(input("Quelle est l'ordonee du deuxième vecteur ?\n"))
+            z2 = float(input("Quelle est l'altitude du deuxième vecteur ?\n"))
+            u = y1 * z2 - z1 * y2
+            v = z1 * x1 - x1 * z2
+            w = x1 * y2 - y1 * x2
+            print("Le produit vectoriel de ces deux vecteurs est égal à")
+            print("[", u, "]")
+            print("[", v, "]")
+            print("[", w, "]")
+  if t == "2":
+            print(
+                "\n\nMalheureusement, le produit vectoriel n'est pas défini dans l'hyperespace R^4. Ceci va cependant vous calculer le produit extérieur, qui est les plus utilisé.\n\n"
+            )
+            x1 = float(input("Quelle est l'abscisse du premier vecteur?\n"))
+            y1 = float(input("Quelle est l'ordonee du premier vecteur ?\n"))
+            z1 = float(input("Quelle est l'altitude du premier vecteur ?\n"))
+            w1 = float(input("Quelle est l'ana/kata du premier vecteur ?\n"))
+            x2 = float(input("Quelle est l'abscisse du deuxième vecteur?\n"))
+            y2 = float(input("Quelle est l'ordonee du deuxième vecteur ?\n"))
+            z2 = float(input("Quelle est l'altitude du deuxième vecteur ?\n"))
+            w2 = float(input("Quelle est l'ana/kata du deuxième vecteur ?\n"))
+            u = x1 * y2 - y1 * x2
+            v = x1 * z2 - z1 * x2
+            a = x1 * w2 - w1 * y2
+            b = y1 * z2 - z1 * y2
+            c = y2 * w2 - w1 * y2
+            d = z1 * w2 - w1 * z2
+            print("Le produit extérieur de ces deux vecteurs est égal à")
+            print("[", u, "]")
+            print("[", v, "]")
+            print("[", a, "]")
+            print("[", b, "]")
+            print("[", c, "]")
+            print("[", d, "]")
+
+def norm():
+  print(
+            "\n\nAttention : tous les calculs effectués le seront dans une base orthonormée !\n"
+        )
+  t = input("Quelle dimension ?\n1 :1d\n2 :2d\n3 :3d\n4 :4d\n")
+  if t == "1":
+            x1 = float(input("Quelle est l'abscisse du vecteur?\n"))
+            print("La norme de ce vecteur est égale à", x1,"\n(C'était un calcul très difficile... :)")
+  if t == "2":
+            x1 = float(input("Quelle est l'abscisse du vecteur?\n"))
+            y1 = float(input("Quelle est l'ordonee du vecteur ?\n"))
+            print("La norme de ce vecteur est égale à", (x1 + y1)**(1 / 2))
+  if t == "3":
+            x1 = float(input("Quelle est l'abscisse du vecteur?\n"))
+            y1 = float(input("Quelle est l'ordonee du vecteur ?\n"))
+            z1 = float(input("Quelle est l'altitude du vecteur ?\n"))
+            print("La norme de ce vecteur est égale à", (x1 + y1 + z1)
+                  **(1 / 2))
+  if t == "4":
+            x1 = float(input("Quelle est l'abscisse du vecteur?\n"))
+            y1 = float(input("Quelle est l'ordonee du vecteur ?\n"))
+            z1 = float(input("Quelle est l'altitude du vecteur ?\n"))
+            w1 = float(input("Quelle est l'ana/kata du vecteur ?\n"))
+            print("La norme de ce vecteur est égale à", (x1 + y1 + z1 + w1)
+                  **(1 / 2))
+
+def binary():
+  print(
+        "\n\nIntroduisez votre message.\nVeuillez n'utiliser que des minuscules, des majuscules, des chiffres, la ponctuation de base et les espaces.\nLorsque vous avez fini votre message, veuillez taper enter.\n"
+    )
+  message = input("Quel est votre message ?\n")
+  for c in message:
+        if c == "a":
+            list.append("01100001 ")
+        if c == "b":
+            list.append("01100010 ")
+        if c == "c":
+            list.append("01100011 ")
+        if c == "d":
+            list.append("01100100 ")
+        if c == "e":
+            list.append("01100101 ")
+        if c == "f":
+            list.append("01100110 ")
+        if c == "g":
+            list.append("01100111 ")
+        if c == "h":
+            list.append("01101000 ")
+        if c == "i":
+            list.append("01101001 ")
+        if c == "j":
+            list.append("01101010 ")
+        if c == "k":
+            list.append("01101011 ")
+        if c == "l":
+            list.append("01101100 ")
+        if c == "m":
+            list.append("01101101 ")
+        if c == "n":
+            list.append("01101110 ")
+        if c == "o":
+            list.append("01101111 ")
+        if c == "p":
+            list.append("01110000 ")
+        if c == "q":
+            list.append("01110001 ")
+        if c == "r":
+            list.append("01110010 ")
+        if c == "s":
+            list.append("01110011 ")
+        if c == "t":
+            list.append("01110100 ")
+        if c == "u":
+            list.append("01110101 ")
+        if c == "v":
+            list.append("01110110 ")
+        if c == "w":
+            list.append("01110111 ")
+        if c == "x":
+            list.append("01111000 ")
+        if c == "y":
+            list.append("01111001 ")
+        if c == "z":
+            list.append("01111010 ")
+        if c == "A":
+            list.append("01000001 ")
+        if c == "B":
+            list.append("01000010 ")
+        if c == "C":
+            list.append("01000011 ")
+        if c == "D":
+            list.append("01000100 ")
+        if c == "E":
+            list.append("01000101 ")
+        if c == "F":
+            list.append("01000110 ")
+        if c == "G":
+            list.append("01000111 ")
+        if c == "H":
+            list.append("01001000 ")
+        if c == "I":
+            list.append("01001001 ")
+        if c == "J":
+            list.append("01001010 ")
+        if c == "K":
+            list.append("01001011 ")
+        if c == "L":
+            list.append("01001100 ")
+        if c == "M":
+            list.append("01001101 ")
+        if c == "N":
+            list.append("01001110 ")
+        if c == "O":
+            list.append("01001111 ")
+        if c == "P":
+            list.append("01010000 ")
+        if c == "Q":
+            list.append("01010001 ")
+        if c == "R":
+            list.append("01010010 ")
+        if c == "S":
+            list.append("01010011 ")
+        if c == "T":
+            list.append("01010100 ")
+        if c == "U":
+            list.append("01010101 ")
+        if c == "V":
+            list.append("01010110 ")
+        if c == "W":
+            list.append("01010111 ")
+        if c == "X":
+            list.append("01011000 ")
+        if c == "Y":
+            list.append("01011001 ")
+        if c == "Z":
+            list.append("01011010 ")
+        if c == ".":
+            list.append("00101110 ")
+        if c == ",":
+            list.append("00101100 ")
+        if c == "?":
+            list.append("00111111 ")
+        if c == "!":
+            list.append("00100001 ")
+        if c == ":":
+            list.append("00111010 ")
+        if c == "=":
+            list.append("00111101 ")
+        if c == "+":
+            list.append("00101011 ")
+        if c == "-":
+            list.append("00101101 ")
+        if c == "1":
+            list.append("00110001 ")
+        if c == "2":
+            list.append("00110010 ")
+        if c == "3":
+            list.append("00110011 ")
+        if c == "4":
+            list.append("00110100 ")
+        if c == "5":
+            list.append("00110101 ")
+        if c == "6":
+            list.append("00110110 ")
+        if c == "7":
+            list.append("00110111 ")
+        if c == "8":
+            list.append("00111000 ")
+        if c == "9":
+            list.append("00111001 ")
+        if c == "0":
+            list.append("00110000 ")
+        if c == " ":
+            list.append("00100000 ")
+        if c == "'":
+            list.append("00100111 ")
+  print("Voici votre message en binaire ASCII:\n")
+  scrollTxt(list)
+
+def hexadecimal():
+  print(
+        "\n\nIntroduisez votre message.\nVeuillez n'utiliser que des minuscules, des majuscules, des chiffres, la ponctuation de base et les espaces.\nLorsque vous avez fini votre message, veuillez taper enter.\n"
+    )
+  message = input("Quel est votre message ?\n")
+  for c in message:
+        if c == "a":
+            list.append("61 ")
+        if c == "b":
+            list.append("62 ")
+        if c == "c":
+            list.append("63 ")
+        if c == "d":
+            list.append("64 ")
+        if c == "e":
+            list.append("65 ")
+        if c == "f":
+            list.append("66 ")
+        if c == "g":
+            list.append("67 ")
+        if c == "h":
+            list.append("68 ")
+        if c == "i":
+            list.append("69 ")
+        if c == "j":
+            list.append("6A ")
+        if c == "k":
+            list.append("6B ")
+        if c == "l":
+            list.append("6C ")
+        if c == "m":
+            list.append("6D ")
+        if c == "n":
+            list.append("6E ")
+        if c == "o":
+            list.append("6F ")
+        if c == "p":
+            list.append("70 ")
+        if c == "q":
+            list.append("71 ")
+        if c == "r":
+            list.append("72 ")
+        if c == "s":
+            list.append("73 ")
+        if c == "t":
+            list.append("74 ")
+        if c == "u":
+            list.append("75 ")
+        if c == "v":
+            list.append("76 ")
+        if c == "w":
+            list.append("77 ")
+        if c == "x":
+            list.append("78 ")
+        if c == "y":
+            list.append("79 ")
+        if c == "z":
+            list.append("7A ")
+        if c == "A":
+            list.append("41 ")
+        if c == "B":
+            list.append("42 ")
+        if c == "C":
+            list.append("43 ")
+        if c == "D":
+            list.append("44 ")
+        if c == "E":
+            list.append("45 ")
+        if c == "F":
+            list.append("46 ")
+        if c == "G":
+            list.append("47 ")
+        if c == "H":
+            list.append("48 ")
+        if c == "I":
+            list.append("49 ")
+        if c == "J":
+            list.append("4A ")
+        if c == "K":
+            list.append("4B ")
+        if c == "L":
+            list.append("4C ")
+        if c == "M":
+            list.append("4D ")
+        if c == "N":
+            list.append("4E ")
+        if c == "O":
+            list.append("4F ")
+        if c == "P":
+            list.append("50 ")
+        if c == "Q":
+            list.append("51 ")
+        if c == "R":
+            list.append("52 ")
+        if c == "S":
+            list.append("53 ")
+        if c == "T":
+            list.append("54 ")
+        if c == "U":
+            list.append("55 ")
+        if c == "V":
+            list.append("56 ")
+        if c == "W":
+            list.append("57 ")
+        if c == "X":
+            list.append("58 ")
+        if c == "Y":
+            list.append("59 ")
+        if c == "Z":
+            list.append("5A ")
+        if c == ".":
+            list.append("2E ")
+        if c == ",":
+            list.append("2C ")
+        if c == "?":
+            list.append("3F ")
+        if c == "!":
+            list.append("21 ")
+        if c == ":":
+            list.append("3A ")
+        if c == "=":
+            list.append("3D ")
+        if c == "+":
+            list.append("2B ")
+        if c == "-":
+            list.append("2D ")
+        if c == "1":
+            list.append("31 ")
+        if c == "2":
+            list.append("32 ")
+        if c == "3":
+            list.append("33 ")
+        if c == "4":
+            list.append("34 ")
+        if c == "5":
+            list.append("35 ")
+        if c == "6":
+            list.append("36 ")
+        if c == "7":
+            list.append("37 ")
+        if c == "8":
+            list.append("38 ")
+        if c == "9":
+            list.append("39 ")
+        if c == "0":
+            list.append("30 ")
+        if c == " ":
+            list.append("20 ")
+        if c == "'":
+            list.append("27 ")
+  print("Voici votre message en hexadécimal ASCII:\n")
+  scrollTxt(list)
+
+def morse():
+  list = []
+  print(
+        "\n\nIntroduisez votre message.\nVeuillez n'utiliser que des minuscules, des chiffres, la ponctuation de base et les espaces.\nLorsque vous avez fini votre message, veuillez taper enter.\n"
+    )
+  message = input("Quel est votre message ?\n")
+  for c in message:
+        if c == "a":
+            list.append(".- ")
+        if c == "b":
+            list.append("-... ")
+        if c == "c":
+            list.append("-.-. ")
+        if c == "d":
+            list.append("-.. ")
+        if c == "e":
+            list.append(". ")
+        if c == "f":
+            list.append("..-. ")
+        if c == "g":
+            list.append("--. ")
+        if c == "h":
+            list.append(".... ")
+        if c == "i":
+            list.append(".. ")
+        if c == "j":
+            list.append(".--- ")
+        if c == "k":
+            list.append("-.- ")
+        if c == "l":
+            list.append(".-.. ")
+        if c == "m":
+            list.append("-- ")
+        if c == "n":
+            list.append("-. ")
+        if c == "o":
+            list.append("--- ")
+        if c == "p":
+            list.append(".--. ")
+        if c == "q":
+            list.append("--.- ")
+        if c == "r":
+            list.append(".-. ")
+        if c == "s":
+            list.append("... ")
+        if c == "t":
+            list.append("- ")
+        if c == "u":
+            list.append("..- ")
+        if c == "v":
+            list.append("...- ")
+        if c == "w":
+            list.append(".-- ")
+        if c == "x":
+            list.append("-..- ")
+        if c == "y":
+            list.append("-.-- ")
+        if c == "z":
+            list.append("--.. ")
+        if c == ".":
+            list.append(".-.-.- ")
+        if c == ",":
+            list.append("--..-- ")
+        if c == "?":
+            list.append("..--.. ")
+        if c == "!":
+            list.append("-.-.-- ")
+        if c == ":":
+            list.append("---... ")
+        if c == "=":
+            list.append("-...- ")
+        if c == "+":
+            list.append(".-.-. ")
+        if c == "-":
+            list.append("-....- ")
+        if c == "1":
+            list.append(".---- ")
+        if c == "2":
+            list.append("..--- ")
+        if c == "3":
+            list.append("...-- ")
+        if c == "4":
+            list.append("....- ")
+        if c == "5":
+            list.append("..... ")
+        if c == "6":
+            list.append("-.... ")
+        if c == "7":
+            list.append("--... ")
+        if c == "8":
+            list.append("---.. ")
+        if c == "9":
+            list.append("----. ")
+        if c == "0":
+            list.append("----- ")
+        if c == " ":
+            list.append("   ")
+        if c == "'":
+            list.append(".----.")
+  print("Voici votre message en morse:\n")
+  scrollTxt(list)
+  print("stop")
+
+def morse_inverse():
+  list = []
+  print(
+            "\n\nIntroduisez les signes morses un par un avec . et -.\nLorsque vous avez fini, tapez fin\n"
+        )
+  nbr = 1
+  while nbr == 1:
+            c = input("Prochain signe morse:\n")
+            if c == ".-":
+                list.append("a ")
+            if c == "-...":
+                list.append("b ")
+            if c == "-.-.":
+                list.append("c ")
+            if c == "-..":
+                list.append("d ")
+            if c == ".":
+                list.append("e ")
+            if c == "..-.":
+                list.append("f ")
+            if c == "--.":
+                list.append("g ")
+            if c == "....":
+                list.append("h ")
+            if c == "..":
+                list.append("i ")
+            if c == ".---":
+                list.append("j ")
+            if c == "-.-":
+                list.append("k ")
+            if c == ".-..":
+                list.append("l ")
+            if c == "--":
+                list.append("m ")
+            if c == "-.":
+                list.append("n ")
+            if c == "---":
+                list.append("o ")
+            if c == ".--.":
+                list.append("p ")
+            if c == "--.-":
+                list.append("q ")
+            if c == ".-.":
+                list.append("r ")
+            if c == "...":
+                list.append("s ")
+            if c == "-":
+                list.append("t ")
+            if c == "..-":
+                list.append("u ")
+            if c == "...-":
+                list.append("v ")
+            if c == ".--":
+                list.append("w ")
+            if c == "-..-":
+                list.append("x ")
+            if c == "-.--":
+                list.append("y ")
+            if c == "--..":
+                list.append("z ")
+            if c == ".-.-.-":
+                list.append(". ")
+            if c == "--..--":
+                list.append(", ")
+            if c == "..--..":
+                list.append("? ")
+            if c == "-.-.--":
+                list.append("! ")
+            if c == "---...":
+                list.append(": ")
+            if c == "-...-":
+                list.append("= ")
+            if c == ".-.-.":
+                list.append("+ ")
+            if c == "-....-":
+                list.append("- ")
+            if c == ".----":
+                list.append("1 ")
+            if c == "..---":
+                list.append("2 ")
+            if c == "...--":
+                list.append("3 ")
+            if c == "....-":
+                list.append("4 ")
+            if c == ".....":
+                list.append("5 ")
+            if c == "-....":
+                list.append("6 ")
+            if c == "--...":
+                list.append("7 ")
+            if c == "---..":
+                list.append("8 ")
+            if c == "----.":
+                list.append("9 ")
+            if c == "-----":
+                list.append("0 ")
+            if c == "20":
+                list.append("  ")
+            if c == "fin":
+                nbr = 0
+  print("Voici votre message en alphabète latin:\n")
+  scrollTxt(list)
+
+def hexadecimal_inverse():
+  list = []
+  print(
+            "\n\nIntroduisez les chiffres et les lettres (les bytes) les uns après les autres.\nUne fois que vous avez fini, tapez fin\n"
+        )
+  nbr = 1
+  while nbr == 1:
+            c = input("Prochain byte:\n")
+            if c == "61":
+                list.append("a ")
+            if c == "62":
+                list.append("b ")
+            if c == "63":
+                list.append("c ")
+            if c == "64":
+                list.append("d ")
+            if c == "65":
+                list.append("e ")
+            if c == "66":
+                list.append("f ")
+            if c == "67":
+                list.append("g ")
+            if c == "68":
+                list.append("h ")
+            if c == "69":
+                list.append("i ")
+            if c == "6A":
+                list.append("j ")
+            if c == "6B":
+                list.append("k ")
+            if c == "6C":
+                list.append("l ")
+            if c == "6D":
+                list.append("m ")
+            if c == "6E":
+                list.append("n ")
+            if c == "6F":
+                list.append("o ")
+            if c == "70":
+                list.append("p ")
+            if c == "71":
+                list.append("q ")
+            if c == "72":
+                list.append("r ")
+            if c == "73":
+                list.append("s ")
+            if c == "74":
+                list.append("t ")
+            if c == "75":
+                list.append("u ")
+            if c == "76":
+                list.append("v ")
+            if c == "77":
+                list.append("w ")
+            if c == "78":
+                list.append("x ")
+            if c == "79":
+                list.append("y ")
+            if c == "7A":
+                list.append("z ")
+            if c == "41":
+                list.append("A ")
+            if c == "42":
+                list.append("B ")
+            if c == "43":
+                list.append("C ")
+            if c == "44":
+                list.append("D ")
+            if c == "45":
+                list.append("E ")
+            if c == "46":
+                list.append("F ")
+            if c == "47":
+                list.append("G ")
+            if c == "48":
+                list.append("H ")
+            if c == "49":
+                list.append("I ")
+            if c == "4A":
+                list.append("J ")
+            if c == "4B":
+                list.append("K ")
+            if c == "4C":
+                list.append("L ")
+            if c == "4D":
+                list.append("M ")
+            if c == "4E":
+                list.append("N ")
+            if c == "4F":
+                list.append("O ")
+            if c == "50":
+                list.append("P ")
+            if c == "51":
+                list.append("Q ")
+            if c == "52":
+                list.append("R ")
+            if c == "53":
+                list.append("S ")
+            if c == "54":
+                list.append("T ")
+            if c == "55":
+                list.append("U ")
+            if c == "56":
+                list.append("V ")
+            if c == "57":
+                list.append("W ")
+            if c == "58":
+                list.append("X ")
+            if c == "59":
+                list.append("Y ")
+            if c == "5A":
+                list.append("Z ")
+            if c == "2E":
+                list.append(". ")
+            if c == "2C":
+                list.append(", ")
+            if c == "3F":
+                list.append("? ")
+            if c == "21":
+                list.append("! ")
+            if c == "3A":
+                list.append(": ")
+            if c == "3D":
+                list.append("= ")
+            if c == "2B":
+                list.append("+ ")
+            if c == "2D":
+                list.append("- ")
+            if c == "31":
+                list.append("1 ")
+            if c == "32":
+                list.append("2 ")
+            if c == "33":
+                list.append("3 ")
+            if c == "34":
+                list.append("4 ")
+            if c == "35":
+                list.append("5 ")
+            if c == "36":
+                list.append("6 ")
+            if c == "37":
+                list.append("7 ")
+            if c == "38":
+                list.append("8 ")
+            if c == "39":
+                list.append("9 ")
+            if c == "30":
+                list.append("0 ")
+            if c == "20":
+                list.append("  ")
+            if c == "27":
+                list.append("' ")
+            if c == "fin":
+                nbr = 0
+  print("Voici votre message en alphabète latin:\n")
+  scrollTxt(list)
+
+def binary_inverse():
+  list = []
+  print(
+            "\n\nIntroduisez les bytes les uns après les autres.\nUne fois que vous avez fini, tapez fin\n"
+        )
+  nbr = 1
+  while nbr == 1:
+            c = input("Prochain byte:\n")
+            if c == "01100001":
+                list.append("a ")
+            if c == "01100010":
+                list.append("b ")
+            if c == "01100011":
+                list.append("c ")
+            if c == "01100100":
+                list.append("d ")
+            if c == "01100101":
+                list.append("e ")
+            if c == "01100110":
+                list.append("f ")
+            if c == "01100111":
+                list.append("g ")
+            if c == "01101000":
+                list.append("h ")
+            if c == "01101001":
+                list.append("i ")
+            if c == "01101010":
+                list.append("j ")
+            if c == "01101011":
+                list.append("k ")
+            if c == "01101100":
+                list.append("l ")
+            if c == "01101101":
+                list.append("m ")
+            if c == "01101110":
+                list.append("n ")
+            if c == "01101111":
+                list.append("o ")
+            if c == "01110000":
+                list.append("p ")
+            if c == "01110001":
+                list.append("q ")
+            if c == "01110010":
+                list.append("r ")
+            if c == "01110011":
+                list.append("s ")
+            if c == "01110100":
+                list.append("t ")
+            if c == "01110101":
+                list.append("u ")
+            if c == "01110110":
+                list.append("v ")
+            if c == "01110111":
+                list.append("w ")
+            if c == "01111000":
+                list.append("x ")
+            if c == "01111001":
+                list.append("y ")
+            if c == "01111010":
+                list.append("z ")
+            if c == "01000001":
+                list.append("A ")
+            if c == "01000010":
+                list.append("B ")
+            if c == "01000011":
+                list.append("C ")
+            if c == "01000100":
+                list.append("D ")
+            if c == "01000101":
+                list.append("E ")
+            if c == "01000110":
+                list.append("F ")
+            if c == "01000111":
+                list.append("G ")
+            if c == "01001000":
+                list.append("H ")
+            if c == "01001001":
+                list.append("I ")
+            if c == "01001010":
+                list.append("J ")
+            if c == "01001011":
+                list.append("K ")
+            if c == "01001100":
+                list.append("L ")
+            if c == "01001101":
+                list.append("M ")
+            if c == "01001110":
+                list.append("N ")
+            if c == "01001111":
+                list.append("O ")
+            if c == "01010000":
+                list.append("P ")
+            if c == "01010001":
+                list.append("Q ")
+            if c == "01010010":
+                list.append("R ")
+            if c == "01010011":
+                list.append("S ")
+            if c == "01010100":
+                list.append("T ")
+            if c == "01010101":
+                list.append("U ")
+            if c == "01010110":
+                list.append("V ")
+            if c == "01010111":
+                list.append("W ")
+            if c == "01011000":
+                list.append("X ")
+            if c == "01011001":
+                list.append("Y ")
+            if c == "01011010":
+                list.append("Z ")
+            if c == "00101110":
+                list.append(". ")
+            if c == "00101110":
+                list.append(", ")
+            if c == "00111111":
+                list.append("? ")
+            if c == "00100001":
+                list.append("! ")
+            if c == "00111010":
+                list.append(": ")
+            if c == "00111101":
+                list.append("= ")
+            if c == "00101011":
+                list.append("+ ")
+            if c == "00101101":
+                list.append("- ")
+            if c == "00110001":
+                list.append("1 ")
+            if c == "00110010":
+                list.append("2 ")
+            if c == "00110011":
+                list.append("3 ")
+            if c == "00110100":
+                list.append("4 ")
+            if c == "00110101":
+                list.append("5 ")
+            if c == "00110110":
+                list.append("6 ")
+            if c == "00110111":
+                list.append("7 ")
+            if c == "00111000":
+                list.append("8 ")
+            if c == "00111001":
+                list.append("9 ")
+            if c == "00110000":
+                list.append("0 ")
+            if c == "00100000":
+                list.append("  ")
+            if c == "00100111":
+                list.append("' ")
+            if c == "fin":
+                nbr = 0
+  print("Voici votre message en alphabète latin:\n")
+  scrollTxt(list)
+
+def encrypt_vigenere():
+  print(
+                "\n\nCeci cryptera vos messages selon la méthode de la Vigenère.\nVeuillez n'utiliser que des minuscules et des espaces.\n"
+            )
+  message = input("Entrez votre message à crypter:\n")
+  decalage = input(
+                "Entrez la clef de cryptage :\n")
+  clef = []
+  list = []
+  for letter in decalage:
+                letter = ord(letter)
+                clef.append(letter)
+  d = 0
+  for lettre in message:
+                a = clef[d]
+                if lettre != " ":
+                    crypte = chr(((ord(lettre) - 97 + a) % 26) + 97)
+                    lettre = chr(ord(crypte) - 32)
+                list.append(lettre)
+                d = (d + 1) % len(clef)
+  print("Voici votre message crypté:\n")
+  scrollTxt(list)
+
+def vernam():
+  print(
+                "\n\nCe cryptage est théoriquement impossible à casser.\nLa clef sera aléatoire et créée en même temps.\nVeuillez n'utiliser que des minuscules et des espaces.\n"
+            )
+  message = input("Entrez votre message à crypter:\n")
+  clef = []
+  d = 0
+  for i in message:
+                if i != " ":
+                    d = d + 1
+  for i in range(d):
+                z = int(random.randint(0, 100))
+                clef.append(z)
+  clef1 = []
+  for i in clef:
+                i = (i%26)
+                i = i + 65
+                u = chr(i)
+                clef1.append(u)
+  list = []
+  d = 0
+  for lettre in message:
+                a = ord(clef1[d])
+                if lettre != " ":
+                    crypte = chr(((ord(lettre) - 97 + a) % 26) + 97)
+                    lettre = chr(ord(crypte) - 32)
+                list.append(lettre)
+                d = (d + 1) % len(clef)
+  print("\nVoici votre clef de cryptage:\n")
+  scrollTxt(clef1)
+  print("\n\nVoici votre message crypté:\n")
+  scrollTxt(list)
+  print(
+                "\n\nNote : Pour le décrypter, il suffit d'utiliser la méthode de Vigenère\n"
+            )
+
+
+def decrypt_vigenere():
+  print(
+                "Ceci décryptera vos messages selon la méthode de Vigenère.\nVeuillez n'utiliser que des majuscules et des espaces\n"
+            )
+  message = input("Entrez votre message à décrypter:\n")
+  decalage = input(
+                "Entrez la clef de cryptage :\n")
+  clef = []
+  list = []
+  for letter in decalage:
+                letter = ord(letter)
+                clef.append(letter)
+  d = 0
+  for lettre in message:
+                a = clef[d]
+                if lettre != " ":
+                    crypte = chr(((ord(lettre) - 65 - a) % 26) + 65)
+                    lettre = chr(ord(crypte) + 32)
+                list.append(lettre)
+                d = (d + 1) % len(clef)
+  print("Voici votre message décrypté:\n")
+  scrollTxt(list)
+
+def molar_mass():
+    c = 0
+    n_m = []
+    print(
+        "\n\nVeuillez donner un à un tous les éléments chimiques, en utilisant leur abréviations (majuscules et minuscules), puis leur fréquence dans la molécule. \nTapez fin lorsque vous avez fini.\n"
+    )
+    i = True
+    while i == True:
+        m = input("Prochaine molécule:\n")
+        if m == "fin":
+            i = False
+        if i == True:
+            delta = input("Quelle fréquence ?\n")
+        f = int(delta)
+        if m == "H":
+            d = 1.007975 * f
+            c = c + d
+        if m == "He":
+            d = 4.002602 * f
+            c = c + d
+        if m == "Li":
+            d = 6.9395 * f
+            c = c + d
+        if m == "Be":
+            d = 9.0121831 * f
+            c = c + d
+        if m == "B":
+            d = 10.8135 * f
+            c = c + d
+        if m == "C":
+            d = 12.0106 * f
+            c = c + d
+        if m == "N":
+            d = 14.006855 * f
+            c = c + d
+        if m == "O":
+            d = 15.9994 * f
+            c = c + d
+        if m == "F":
+            d = 18.99840316 * f
+            c = c + d
+        if m == "Ne":
+            d = 20.1797 * f
+            c = c + d
+        if m == "Na":
+            d = 22.98976928 * f
+            c = c + d
+        if m == "Mg":
+            d = 24.3055 * f
+            c = c + d
+        if m == "Al":
+            d = 26.9815385 * f
+            c = c + d
+        if m == "Si":
+            d = 28.085 * f
+            c = c + d
+        if m == "P":
+            d = 30.97376200 * f
+            c = c + d
+        if m == "S":
+            d = 32.0675 * f
+            c = c + d
+        if m == "Cl":
+            d = 35.4515 * f
+            c = c + d
+        if m == "Ar":
+            d = 39.948 * f
+            c = c + d
+        if m == "K":
+            d = 39.0983 * f
+            c = c + d
+        if m == "Ca":
+            d = 40.078 * f
+            c = c + d
+        if m == "Sc":
+            d = 44.955908 * f
+            c = c + d
+        if m == "Ti":
+            d = 47.867 * f
+            c = c + d
+        if m == "V":
+            d = 50.9415 * f
+            c = c + d
+        if m == "Cr":
+            d = 51.9961 * f
+            c = c + d
+        if m == "Mn":
+            d = 54.938044 * f
+            c = c + d
+        if m == "Fe":
+            d = 55.845 * f
+            c = c + d
+        if m == "Co":
+            d = 58.933194 * f
+            c = c + d
+        if m == "Ni":
+            d = 58.6934 * f
+            c = c + d
+        if m == "Cu":
+            d = 63.546 * f
+            c = c + d
+        if m == "Zn":
+            d = 65.38 * f
+            c = c + d
+        if m == "Ga":
+            d = 79.723 * f
+            c = c + d
+        if m == "Ge":
+            d = 72.630 * f
+            c = c + d
+        if m == "As":
+            d = 74.921595 * f
+            c = c + d
+        if m == "Se":
+            d = 78.971 * f
+            c = c + d
+        if m == "Br":
+            d = 79.904 * f
+            c = c + d
+        if m == "Kr":
+            d = 83.798 * f
+            c = c + d
+        if m == "Rb":
+            d = 85.4678 * f
+            c = c + d
+        if m == "Sr":
+            d = 87.62 * f
+            c = c + d
+        if m == "Y":
+            d = 88.90584 * f
+            c = c + d
+        if m == "Zr":
+            d = 91.224 * f
+            c = c + d
+        if m == "Nb":
+            d = 92.90637 * f
+            c = c + d
+        if m == "Mo":
+            d = 95.95 * f
+            c = c + d
+        if m == "Tc":
+            d = 98 * f
+            c = c + d
+        if m == "Ru":
+            d = 101.07 * f
+            c = c + d
+        if m == "Rh":
+            d = 102.9055 * f
+            c = c + d
+        if m == "Pd":
+            d = 106.42 * f
+            c = c + d
+        if m == "Ag":
+            d = 107.8682 * f
+            c = c + d
+        if m == "Cd":
+            d = 112.414 * f
+            c = c + d
+        if m == "In":
+            d = 114.818 * f
+            c = c + d
+        if m == "Sn":
+            d = 118.710 * f
+            c = c + d
+        if m == "Sb":
+            d = 121.760 * f
+            c = c + d
+        if m == "Te":
+            d = 127.6 * f
+            c = c + d
+        if m == "I":
+            d = 126.90447 * f
+            c = c + d
+        if m == "Xe":
+            d = 131.293 * f
+            c = c + d
+        if m == "Cs":
+            d = 132.905452 * f
+            c = c + d
+        if m == "Ba":
+            d = 137.327 * f
+            c = c + d
+        if m == "La":
+            d = 138.90547 * f
+            c = c + d
+        if m == "Ce":
+            d = 140.116 * f
+            c = c + d
+        if m == "Pr":
+            d = 140.90766 * f
+            c = c + d
+        if m == "Nd":
+            d = 144.242 * f
+            c = c + d
+        if m == "Pm":
+            d = 145 * f
+            c = c + d
+        if m == "Sm":
+            d = 150.36 * f
+            c = c + d
+        if m == "Eu":
+            d = 151.964 * f
+            c = c + d
+        if m == "Gd":
+            d = 157.25 * f
+            c = c + d
+        if m == "Tb":
+            d = 158.92535 * f
+            c = c + d
+        if m == "Dy":
+            d = 162.5 * f
+            c = c + d
+        if m == "Ho":
+            d = 1643.93033 * f
+            c = c + d
+        if m == "Er":
+            d = 167.259 * f
+            c = c + d
+        if m == "Tm":
+            d = 168.93422 * f
+            c = c + d
+        if m == "Yb":
+            d = 173.045 * f
+            c = c + d
+        if m == "Lu":
+            d = 174.9668 * f
+            c = c + d
+        if m == "Hf":
+            d = 178.49 * f
+            c = c + d
+        if m == "Ta":
+            d = 180.94788 * f
+            c = c + d
+        if m == "W":
+            d = 183.84 * f
+            c = c + d
+        if m == "Re":
+            d = 186.207 * f
+            c = c + d
+        if m == "Os":
+            d = 190.23 * f
+            c = c + d
+        if m == "Ir":
+            d = 192.217 * f
+            c = c + d
+        if m == "Pt":
+            d = 195.084 * f
+            c = c + d
+        if m == "Au":
+            d = 196.966569 * f
+            c = c + d
+        if m == "Hg":
+            d = 200.592 * f
+            c = c + d
+        if m == "Ti":
+            d = 204.3835 * f
+            c = c + d
+        if m == "Pb":
+            d = 207.2 * f
+            c = c + d
+        if m == "Bi":
+            d = 208.98040 * f
+            c = c + d
+        if m == "Po":
+            d = 209 * f
+            c = c + d
+        if m == "At":
+            d = 210 * f
+            c = c + d
+        if m == "Rn":
+            d = 222 * f
+            c = c + d
+        if m == "Fr":
+            d = 223 * f
+            c = c + d
+        if m == "Ra":
+            d = 226 * f
+            c = c + d
+        if m == "Ac":
+            d = 227 * f
+            c = c + d
+        if m == "Th":
+            d = 232.0377 * f
+            c = c + d
+        if m == "Pa":
+            d = 231.03588 * f
+            c = c + d
+        if m == "U":
+            d = 238.02891 * f
+            c = c + d
+        if i == True:
+            n_m.append(m)
+            n_m.append(delta)
+            n_m.append(" ")
+    print("Vérification : est-ce bien votre formule chimique ?\n")
+    scrollTxt(n_m)
+    print("\n")
+    qw = input("")
+    if qw == "oui":
+        print("Sa masse molaire est égale à", c, "g/mol.\n")
+    if qw == "non":
+        molar_mass()
+
+def quantity():
+    print("\n\nCeci vous calcul le nombre de moles (n)\n")
+    quant = float(input("Quelle est la quantité que vous avez ? (En g)\n"))
+    mass = float(
+        input("Quelle est la masse molaire de votre molécule? (En g/mol)\n"))
+    print("Vous disposez d'exactement", quant / mass,
+          " moles de cette molécule.")
+
+def gravity():
+    print(
+        "\n\nCeci vous permet de calculer la force d'attraction entre deux objets en Newtons\n"
+    )
+    x1 = float(input("Quelle est la masse du premier objet ? (En kg)\n"))
+    y1 = float(input("Quelle est la masse du second objet ? (En kg)\n"))
+    z1 = float(
+        input("Quelle est la distance qui sépare ces objets ? (En mètres)\n"))
+    F = ((6.6738 * (10**-11)) * (x1 * y1)) / (z1**2)
+    print("La force qui unit ces deux objets est égale à", F, "Newtons.")
+
+def pressure():
+    x1 = float(input("Quelle est votre altitude ?\n"))
+    s = 1013.25 * ((1 - (2.26 * (10**-5) * x1))**(5.255))
+    print("La pression à votre altitude est de", s, "hPa.\n")
+
+def game_add():
+        print("Additionnez le plus vite possible!")
+        sleep(1)
+        x = random.randint(0, 1000)
+        y = random.randint(0, 1000)
+        print("Combien font", x, "+", y, " ?\n")
+        a = int(input(""))
+        if a == x + y:
+            print("Correct !")
+        if a > x + y:
+            print("Incorrect...")
+        if a < x + y:
+            print("Incorrect...")
+        sleep(1)
+
+def game_substract():
+        print("Soustrayez le plus vite possible!")
+        sleep(1)
+        x = random.randint(0, 1000)
+        y = random.randint(0, 1000)
+        print("Combien font", x, "-", y, " ?\n")
+        a = int(input(""))
+        if a == x - y:
+            print("Correct !")
+        if a > x - y:
+            print("Incorrect...")
+        if a < x - y:
+            print("Incorrect...")
+        sleep(1)
+
+def game_times():
+        print("Multipliez le plus vite possible!")
+        sleep(1)
+        x = random.randint(0, 100)
+        y = random.randint(0, 100)
+        print("Combien font", x, "x", y, " ?\n")
+        a = int(input(""))
+        if a == x * y:
+            print("Correct !")
+        if a > x * y:
+            print("Incorrect...")
+        if a < x * y:
+            print("Incorrect...")
+        sleep(1)
+
+def joke():
+    nbr = random.randint(0, 20)
+    print("\n")
+    if nbr == 1:
+        print(
+            "Un biologiste demande à un mathématicien : qu’est-ce qu’un ours  polaire ?\n\nCe dernier répond : C’est un ours cartésien qui a changé de repère."
+        )
+    if nbr == 2:
+        print(
+            "Un mathématicien, un biologiste et un physicien voyagent ensemble en Ecosse dans un train. Soudain, ils voient à travers la fenêtre un mouton noir.\n\nLe biologiste dit : « Ah ! En Ecosse les moutons sont noirs. »\n\nLe physicien réplique : « Hum ! Attention ! On n’a fait qu’une observation et tout ce qu’on peut dire c’est qu’il y a un mouton noir, hein ! »\n\nLe mathématicien les regarde avec un air hautain et dit : « En Ecosse, il existe au moins un mouton dont, au moins, un côté est noir. »"
+        )
+    if nbr == 3:
+        print(
+            "Un physicien, un ingénieur en mécanique et un mathématicien sont au dernier étage d’un immeuble en feu. Le seul moyen de s’en sortir est de sauter, par la fenêtre, dans une piscine située sur le toit de l’immeuble d’en face, un peu moins haut. Le saut semble très difficile.\n\nLe physicien analyse la situation, mesure la vitesse du vent, la distance, la différence des hauteurs. Il attrape un papier et un crayon pour y calculer la trajectoire pour déterminer la vitesse et l’angle initial nécessaire pour atterrir au milieu de la piscine.  Quand il termine, les flammes s’approchent dangereusement. Il prend son élan, saute et atterrit de justesse, à quelques centimètres du bord de la piscine.\n\nL’ingénieur ramasse une planche. Il mesure son élasticité et l’accroche sur le bord de la fenêtre. Il utilise les données du physicien pour faire ses calculs. Il remplit une feuille, deux feuilles. Le sol commence à chauffer à cause de la proximité de la flamme. Il termine vite ses calculs, prend son élan, monte sur la planche et saute. Il atterrit à l’intérieur de la piscine, non loin du physicien.\n\nLe mathématicien a désormais les données du physicien et de l’ingénieur. Il commence ses calculs, mais les flammes commencent à entrer par la porte. Il panique. Il a, quand même, eu le temps de  remplir 3 feuilles et terminer ses calculs. Il prend son élan, arrive sur la planche, saute et part tout droit vers le ciel. On ne le voit plus retomber. Que c’est-il passé ?\n\n\nUne erreur de signe."
+        )
+    if nbr == 4:
+        print(
+            "Quel est le comble du mathématicien ? \n\nSe faire piquer sa moitié par un tiers dans un car."
+        )
+    if nbr == 5:
+        print(
+            "Jésus, debout sur son rocher, parle à ses disciples et leur dit :\n\n“y²=2px”\n\nUn des apôtres prend alors la parole :“Écoute, Jésus, déjà d’habitude on comprend pas grand chose à ce que tu nous dis, mais là, franchement on est perdus.”\n\nMais Jésus leur répond :“C’était une parabole…”"
+        )
+    if nbr == 6:
+        print(
+            "Il y a 10 sortes de gens : ceux qui savent compter en binaire et ceux qui ne le savent pas."
+        )
+    if nbr == 7:
+        print(
+            "On demande à plusieurs scientifiques : ” Combien vaut pi ?”\n\nL’ingénieur répond : “C’est approximativement 3 et 1/7.”\n\nLe physicien dit : “C’est 3.14159”\n\nLe mathématicien réfléchit un instant et répond : “C’est égal à pi”."
+        )
+    if nbr == 8:
+        print(
+            "Deux logiciens se rencontrent :\n\nSalut vieux ! J’ai de bonnes nouvelles ! Ma femme a récemment mis au monde notre premier enfant !\n\n– Félicitations ! C’est un garçon ou une fille ?\n\n– Oui.”"
+        )
+    if nbr == 9:
+        print(
+            "On demande à un ingénieur, un physicien et un mathématicien de construire un enclos pour y mettre des moutons.\n\nL’ingénieur regroupe les moutons et construit une clôture autour.\n\nLe physicien construit une palissade en ligne droite qui est en réalité un cercle de diamètre infini.\n\nLe mathématicien construit une petite cloture autour de lui et se définit comme l’extérieur..."
+        )
+    if nbr == 10:
+        print(
+            "Qu’est-ce qui est jaune, normé et complet ?\n\nRéponse : un espace de Bananach..."
+        )
+    if nbr == 11:
+        print(
+            "Un homme d’affaires engage un mathématicien, un informaticien et un physicien afin de pouvoir gagner à tous les tiercés.\n\n\nLe mathématicien le premier s’attaque à la tâche, il calcule des matrices à n’en plus finir, pose des axiomes à tout bout de champ et après de longues semaines de lemmes, théorèmes et conjectures, il conclut que le problème est formellement irrésolvable.\n\n\nEnsuite, l’informaticien heureux d’avoir vu le mathématicien en échec, s’approche de son Cray III et après avoir écrit quantités d’algorithmes en C++ et introduit tous les paramètres et conditions initiales annonce joyeusement qu’il faudra juste quelques centaines d’années pour calculer le résultat de chaque tiercé…\n\n\nLe physicien, le sourire aux lèvres, informe ses éminents collègues qu’il a la solution. Il s’approche d’un tableau noir et tout en dessinant une sphère commence par dire : “Approximons le cheval par une sphère parfaite…”"
+        )
+    if nbr == 12:
+        print(
+            "Quelque part, dans une salle close, sont reunies six personnes pour un concours: Il y a un chimiste, un physicien, astrophysicien, un biologiste, un mathématicien et un informaticien. On leur propose ceci:\n\nMis à part 1, tous les nombres impairs sont premiers.\n\nLe chimiste commence à réfléchir :\n3 : impair, premier -> vrai\n5 : impair, premier -> vrai\n7 : impair, premier -> vrai\n\nCela marche donc toujours ...\n\n\nLe physicien commence à réfléchir :\n3 : impair, premier -> vrai\n5 : impair, premier -> vrai\n7 : impair, premier -> vrai\n9 : impair, pas premier -> faux\n11 : impair, premier -> vrai\n13 : impair, premier -> vrai\n\nBon cela marche pas pour 9, mais comme cela marche pour les autres, on peut dire que, aux incertitudes près, cela fonctionne ... \n\n\nL'astrophysicien :\n3 est premier donc la propriété est vraie.\n\n\nLe biologiste : \nC'est quoi un nombre premier?.\n\n\nLe Mathematicien commence à réfléchir :\n3 : impair, premier -> vrai\n5 : impair, premier -> vrai\n7 : impair, premier -> vrai\n9 : impair, pas premier -> faux\n\nCela ne marche pas pour 9, cette assertion est donc fausse!\n\n\nL'informaticien commence à réfléchir :\n3 : impair, premier -> vrai\n5 : impair, premier -> vrai\n7 : impair, premier -> vrai\n9 : impair, pas premier -> faux\n9 : impair, pas premier -> faux\n9 : impair, pas premier -> faux\n9 : impair, pas premier -> faux\n9 : impair, pas premier -> faux\n9 : impair, pas premier -> faux\n9 : impair, pas premier -> faux\n9 : impair, pas premier -> faux\n9 : impair, pas premier -> faux\n9 : impair, pas premier -> faux\n9 : impair, pas premier -> faux"
+        )
+    if nbr == 13:
+        print(
+            "Un chimiste entre dans une pharmacie :\n\nAvez-vous de l'acide acétylsalicilique C6H4(OCOCH3)COOH ?\n\n- Vous voulez dire de l'aspirine ?\n\n- Oui c'est ça. Je ne me rappelle jamais de ce mot !"
+        )
+    if nbr == 14:
+        print(
+            "f et f' sont sur un yacht. f tombe à l'eau, que fait f'?\n\n- Il dérive..."
+        )
+    if nbr == 15:
+        print(
+            "Cosinus et Exponentielle font la fête. Cosinus boit, fume et a une gueule de bois comme jamais le lendemain. Quand Exponentielle l'interroge sur son comportement, Cosinus répond :\n\nDésolé, vieux, mais je ne connais pas mes limites !"
+        )
+    if nbr == 16:
+        print(
+            "Un ingénieur pense que ses équations sont une approximations de la réalité.\n\nUn physiciens pense que la réalité est une approximation de ses équations.\n\nUn mathématicien s'en moque."
+        )
+    if nbr == 17:
+        print(
+            "Lors d'un entretien d'embauche, un chef d'entreprise reçoit quatre ingénieurs : un ayant fait l'école polytechnique, le second HEC, le troisième informaticien, et le dernier sortant de l'université. Celui-ci explique aux quatre candidats qu'en définitive, pour faire marcher une entreprise, il suffit de savoir compter.\n\nIl s'adresse donc au premier d'entre eux, le polytechnicien, et lui dit : “ allez-y, comptez...” \n\nLe polytechnicien :  une... deux... une... deux...\n\nIl se retourne ensuite vers l'informaticien :\n\n 0...1...0...1...0...\n\nDésespéré, il s'adresse au dernier candidat sortant de fac :  Allez-y, comptez...\n\nLe jeune homme commence :  1... 2... 3... 4... 5... 6... 7...\nLe chef d'entreprise est rassuré :  continuez, continuez...\n\n8... 9... 10... valet... dame... roi... ! "
+        )
+    if nbr == 18:
+        print(
+            "Quel est le comble pour un mathématicien ?\n\nC'est de mourir d'un calcul..."
+        )
+    if nbr == 19:
+        print(
+            "x² va se promener dans la forêt. Quand il ressort, il s'est transformé en x, pourquoi ?\n\nIl s’est pris une racine"
+        )
+    if nbr == 20:
+        print(
+            "Un romain entre dans un bar.\n\nIl lève deux doigts et dit « 5 bières s’il vous plait ! »."
+        )
+    sleep(1.5)
+    autre = input("\n\nUne autre ?\n")
+    if autre == "oui":
+        joke()
+
+def theorem():
+    nbr = random.randint(1, 25)
+    print("\n")
+    if nbr == 1:
+        print("Théorème du sandwich au jambon")
+        print("\n")
+        print(
+            "Étant donné n parties Lebesgue-mesurables et de mesures finies d'un espace euclidien de dimension n, il existe au moins un hyperplan affine divisant chaque partie en deux sous-ensembles de mesures égales."
+        )
+    if nbr == 2:
+        print("Théorème de Bézout")
+        print("\n")
+        print(
+            "deux courbes algébriques projectives planes C ,D de degrés m et n, définies sur un corps algébriquement clos k et sans composante irréductible commune, ont exactement mn points d'intersections, comptés avec leur multiplicité. "
+        )
+    if nbr == 3:
+        print("Paradoxe de Banach-Tarski")
+        print("\n")
+        print(
+            "Si A et B sont des sous-ensembles de R^3 bornes et d’intérieurs non-vides, alors il existe des sous-ensembles A1,...An ⊂ R^3 disjoints deux à deux et des déplacements isométriques φ1,...,φn dans R^3 tels que A est la réunion des Ai et B la réunion des φi(Ai)."
+        )
+    if nbr == 4:
+        print("Théorème de Kuratowski-Mrówka")
+        print("\n")
+        print(
+            " Un espace séparé X est compact si et seulement si pour tout espace Y, la projection pY : X×Y → Y est une application fermée."
+        )
+    if nbr == 5:
+        print("Théorème d'Euler")
+        print("\n")
+        print(
+            "Pour tout entier n > 0 et tout entier a premier avec n (autrement dit : inversible mod n),\n a^φ(n) ≡ 1 mod [n],\noù φ est la fonction indicatrice d'Euler et mod désigne la congruence sur les entiers."
+        )
+    if nbr == 6:
+        print("Théorème de De Bruijn-Erdős")
+        print("\n")
+        print(
+            "(Pour tout entier naturel k) Pour qu'un graphe non orienté infini possède une coloration par k couleurs, il suffit qu'il en soit ainsi pour tous ses sous-graphes finis."
+        )
+    if nbr == 7:
+        print("Théorème d'Euclide sur les nombres premiers")
+        print("\n")
+        print(
+            "Les nombres premiers sont plus nombreux que n'importe quelle multitude de nombres premiers proposée."
+        )
+    if nbr == 8:
+        print("Théorème de la goutte")
+        print("\n")
+        print(
+            "Dans un espace de Banach, soient B un convexe fermé borné non vide et F un fermé à distance non nulle de B. Pour tout point f du fermé F, il existe un point x de D(f, B) tel que F∩D(x, B) = {x}."
+        )
+    if nbr == 9:
+        print("Théorème du graphe fermé")
+        print("\n")
+        print(
+            "Si E et F sont deux espaces vectoriels topologiques complètement métrisables sur un corps valué non discret (par exemple sur le corps des réels munie de sa valeur absolue usuelle ou des complexes muni du module) : pour toute application linéaire f de E dans F, si le graphe de f est fermé dans E×F, alors f est continue."
+        )
+    if nbr == 10:
+        print("Théorème 90 de Hilbert")
+        print("\n")
+        print(
+            " Considérant une extension cyclique de corps de nombres L/K, et g un générateur de son groupe de Galois G, un élément a de L est de norme 1 si, et seulement si, il est de la forme : \na = b/(g( b ))\npour un certain élément b du corps L."
+        )
+    if nbr == 11:
+        print("Théorème de Hamilton")
+        print("\n")
+        print(
+            "Soit ABC un triangle et H son orthocentre. Les triangles ABC, ABH, BCH et ACH ont le même cercle d'Euler."
+        )
+    if nbr == 12:
+        print("Théorème de Hahn-Banach")
+        print("\n")
+        print(
+            " Dans un espace vectoriel topologique E, soient C un convexe ouvert non vide et L un sous-espace affine, disjoint de C. Il existe alors un hyperplan affine contenant L, et disjoint de C donc fermé. "
+        )
+    if nbr == 13:
+        print("Théorème de Liouville")
+        print("\n")
+        print(
+            "— Si f est une fonction définie et holomorphe sur tout le plan complexe, alors f est constante dès lors qu'elle est bornée. "
+        )
+    if nbr == 14:
+        print("Théorème du nid d'abeille")
+        print("\n")
+        print(
+            "Le pavage hexagonal régulier est la partition du plan en surfaces égales ayant le plus petit périmètre. "
+        )
+    if nbr == 15:
+        print("Théorème de Nagel")
+        print("\n")
+        print(
+            "Soit ABC un triangle. Soit H son orthocentre et soit O le centre du cercle circonscrit à ce triangle. Si l'angle B A C  est aigu alors il a la même bissectrice que l'angle H A O ."
+        )
+    if nbr == 16:
+        print("Théorème des cinq points")
+        print("\n")
+        print(
+            "Par cinq points trois à trois non alignés passe une unique conique propre."
+        )
+    if nbr == 17:
+        print("Conjecture de Poincaré")
+        print("\n")
+        print(
+            "Soit une variété compacte V simplement connexe, à 3 dimensions, sans bord. Alors V est homéomorphe à une hypersphère de dimension 3."
+        )
+    if nbr == 18:
+        print("Théorème d'Archimède")
+        print("\n")
+        print(
+            " Tout corps plongé dans un fluide au repos, entièrement mouillé par celui-ci ou traversant sa surface libre, subit une force verticale, dirigée de bas en haut et opposée au poids du volume de fluide déplacé. Cette force est appelée poussée d'Archimède. Elle s'applique au centre de masse du fluide déplacé, appelé centre de poussée. "
+        )
+    if nbr == 19:
+        print("Théorème fondamental de l'arithmétique")
+        print("\n")
+        print(
+            "Tout entier strictement positif peut être écrit comme un produit de nombres premiers d'une unique façon, à l'ordre près des facteurs. "
+        )
+    if nbr == 20:
+        print("Théorème de la boule chevelue")
+        print("\n")
+        print(
+            "Un champ de vecteurs continu sur une sphère de dimension paire s'annule en au moins un point. "
+        )
+    if nbr == 21:
+        print("Théorème du toit")
+        print("\n")
+        print(
+            "Soient P1 et P2 deux plans sécants suivant une droite d. Si une droite est parallèle à P1 et P2, alors elle est parallèle à d. Ou :S'il existe deux droites parallèles d1 et d2, contenues respectivement dans P1 et P2, alors d est parallèle à d1 et d2."
+        )
+    if nbr == 22:
+        print("Théorème de Thalès")
+        print("\n")
+        print(
+            "Si un triangle ABC est inscrit dans un cercle de diamètre [AB], c'est-à-dire que le point C appartient également à ce cercle, alors le triangle est rectangle en C."
+        )
+    if nbr == 23:
+        print("Théorème de Poincaré-Birkhoff")
+        print("\n")
+        print(
+            "Toute transformation Hamiltonienne du tore T2n possède au moins 2n+1 points fixes."
+        )
+    if nbr == 24:
+        print("Théorème de l'image ouverte")
+        print("\n")
+        print(
+            "Soit U un ouvert connexe1 du plan complexe C et f : U → C une fonction holomorphe non constante ; alors f est une application ouverte, c'est-à-dire qu'elle envoie les sous-ensembles ouverts de U vers des ouverts de C. "
+        )
+    if nbr == 25:
+        print("Théorème de Lüroth")
+        print("\n")
+        print(
+            "oit K  un corps commutatif. Soit K ( X )  le corps de fractions rationnelles en une variable. Alors toute sous-extension de K ( X ) / K  différente de K  est de la forme K ( F )  pour une certaine fraction rationnelle F . Autrement dit, c'est aussi un corps de fractions rationnelles en une variable. "
+        )
+    sleep(1.5)
+    autre = input("\n\nUn autre ?\n")
+    if autre == "oui":
+        theorem()
+
+def date_difference():
+    print(
+        "Ceci vous calcule la différence entre deux dates.\nVeuillez indiquer la plus ancienne date d'abord, puis l'autre.\n"
+    )
+    jour1 = int(input("Quel est le premier jour ? : "))
+    mois1 = int(input("Quel est le premier mois ?(en chiffres) : "))
+    année1 = int(input("Quel est la première année? : "))
+    jour2 = int(input("Quel est le deuxième jour ? : "))
+    mois2 = int(input("Quel est le deuxième mois ?(en chiffres) : "))
+    année2 = int(input("Quel est la deuxième année? : "))
+    d = 0
+    if mois1 == 1:
+        year = année1
+        if (year % 4) == 0:
+            if (year % 100) == 0:
+                if (year % 400) == 0:
+                    d = d + 1
+            else:
+                d = d + 1
+        if jour1 != 31:
+            d = d + (31 - jour1)
+        d = d + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30 + 31
+    if mois1 == 2:
+        if jour1 != 29:
+            year = année1
+            if (year % 4) == 0:
+                if (year % 100) == 0:
+                    if (year % 400) == 0:
+                        d = d + 1
+                else:
+                    d = d + 1
+            if jour1 != 28:
+                d = d + (28 - jour1)
+        d = d + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30 + 31
+    if mois1 == 3:
+        if jour1 != 31:
+            d = d + (31 - jour1)
+        d = d + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30 + 31
+    if mois1 == 4:
+        if jour1 != 30:
+            d = d + (30 - jour1)
+        d = d + 31 + 30 + 31 + 31 + 30 + 31 + 30 + 31
+    if mois1 == 5:
+        if jour1 != 31:
+            d = d + (31 - jour1)
+        d = d + 30 + 31 + 31 + 30 + 31 + 30 + 31
+    if mois1 == 6:
+        if jour1 != 30:
+            d = d + (30 - jour1)
+        d = d + 31 + 31 + 30 + 31 + 30 + 31
+    if mois1 == 7:
+        if jour1 != 31:
+            d = d + (31 - jour1)
+        d = d + 31 + 30 + 31 + 30 + 31
+    if mois1 == 8:
+        if jour1 != 31:
+            d = d + (31 - jour1)
+        d = d + 30 + 31 + 30 + 31
+    if mois1 == 9:
+        if jour1 != 30:
+            d = d + (30 - jour1)
+        d = d + 31 + 30 + 31
+    if mois1 == 10:
+        if jour1 != 31:
+            d = d + (31 - jour1)
+        d = d + 30 + 31
+    if mois1 == 11:
+        if jour1 != 30:
+            d = d + (30 - jour1)
+        d = d + 31
+    if mois1 == 12:
+        if jour1 != 31:
+            d = d + (30 - jour1)
+    x = année1
+    y = année2
+    a = y
+    while x < y:
+        y = y - 1
+        a = y
+        year = a
+        if (year % 4) == 0:
+            if (year % 100) == 0:
+                if (year % 400) == 0:
+                    d = d + 1
+            else:
+                d = d + 1
+    u = année2 - année1 - 1
+    w = u * 365
+    d = d + w
+    if mois2 == 1:
+        d = d + jour2
+        d = d - 1
+    if mois2 == 2:
+        d = d + jour2 + 31
+        d = d - 1
+    if mois2 == 3:
+        year = année2
+        if (year % 4) == 0:
+            if (year % 100) == 0:
+                if (year % 400) == 0:
+                    d = d + 1
+            else:
+                d = d + 1
+        d = d + jour2 + 28 + 31
+        d = d - 1
+    if mois2 == 4:
+        year = année2
+        if (year % 4) == 0:
+            if (year % 100) == 0:
+                if (year % 400) == 0:
+                    d = d + 1
+            else:
+                d = d + 1
+        d = d + jour2 + 28 + 31 + 31
+        d = d - 1
+    if mois2 == 5:
+        year = année2
+        if (year % 4) == 0:
+            if (year % 100) == 0:
+                if (year % 400) == 0:
+                    d = d + 1
+            else:
+                d = d + 1
+        d = d + jour2 + 31 + 28 + 31 + 30
+        d = d - 1
+    if mois2 == 6:
+        year = année2
+        if (year % 4) == 0:
+            if (year % 100) == 0:
+                if (year % 400) == 0:
+                    d = d + 1
+            else:
+                d = d + 1
+        d = d + jour2 + 31 + 28 + 31 + 30 + 31
+        d = d - 1
+    if mois2 == 7:
+        year = année2
+        if (year % 4) == 0:
+            if (year % 100) == 0:
+                if (year % 400) == 0:
+                    d = d + 1
+            else:
+                d = d + 1
+        d = d + jour2 + 31 + 28 + 31 + 30 + 31 + 30
+        d = d - 1
+    if mois2 == 8:
+        year = année2
+        if (year % 4) == 0:
+            if (year % 100) == 0:
+                if (year % 400) == 0:
+                    d = d + 1
+            else:
+                d = d + 1
+        d = d + jour2 + 31 + 28 + 31 + 30 + 31 + 30 + 31
+        d = d - 1
+    if mois2 == 9:
+        year = année2
+        if (year % 4) == 0:
+            if (year % 100) == 0:
+                if (year % 400) == 0:
+                    d = d + 1
+            else:
+                d = d + 1
+        d = d + jour2 + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31
+        d = d - 1
+    if mois2 == 10:
+        year = année2
+        if (year % 4) == 0:
+            if (year % 100) == 0:
+                if (year % 400) == 0:
+                    d = d + 1
+            else:
+                d = d + 1
+        d = d + jour2 + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30
+        d = d - 1
+    if mois2 == 11:
+        year = année2
+        if (year % 4) == 0:
+            if (year % 100) == 0:
+                if (year % 400) == 0:
+                    d = d + 1
+            else:
+                d = d + 1
+        d = d + jour2 + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31
+        d = d - 1
+    if mois2 == 12:
+        year = année2
+        if (year % 4) == 0:
+            if (year % 100) == 0:
+                if (year % 400) == 0:
+                    d = d + 1
+            else:
+                d = d + 1
+        d = d + jour2 + 31 + 28 + 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30
+        d = d - 1
+    d = d + 1
+    print("La différence de jours entre le", jour1, ".", mois1, ".", année1,
+          " et le", jour2, ".", mois2, ".", année2,
+          " est de :\n", d, " jours !")
+
+################################################################################
+#Menu principal
+print("\n   Help() to get some help")
+while True:
+    commande = input(
+        "\n\n>>>"
+    )
+################################################################################
+#Choix de la commande
+
+    if commande[0:4] == "Root":
+        Root(float(commande[5:commande.find(",")]),float(commande[commande.find(",")+1:-1]))
+    elif commande[0:5] == "QRoot":
+        QRoot()
+    elif commande[0:4] == "Sqrt":
+        Sqrt(float(commande[5:-1]))
+    elif commande[0:5] == "QSqrt":
+        QSqrt()
+    elif commande[0:3] == "Cos":
+        Cos(float(commande[4:commande.find(",")]),commande[commande.find(",")+1:-1])
+    elif commande[0:4] == "QCos":
+        QCos()
+    elif commande[0:3] == "Sin":
+        Sin(float(commande[4:commande.find(",")]),commande[commande.find(",")+1:-1])
+    elif commande[0:4] == "QSin":
+        QSin()
+    elif commande[0:3] == "Tan":
+        Tan(float(commande[4:commande.find(",")]),commande[commande.find(",")+1:-1])
+    elif commande[0:4] == "QTan":
+        QTan()
+    elif commande[0:3] == "Cot":
+        Cot(float(commande[4:commande.find(",")]),commande[commande.find(",")+1:-1])
+    elif commande[0:4] == "QCot":
+        QCot()
+    elif commande[0:4] == "Trig":
+        Trigonometry()
+    elif commande[0:5] == "QTrig":
+        QTrigonometry()
+    elif commande[0:8] == "Constant":
+        Constant(commande[9:12])
+    elif commande[0:9] == "QConstant":
+        QConstant()
+    elif commande[0:7] == "Chicken":
+        Chicken()
+    elif commande[0:8] == "QChicken":
+        QChicken()
+    elif commande[0:5] == "Pizza":
+        Pizza()
+    elif commande[0:6] == "QPizza":
+        QPizza()
+    elif commande[0:5] == "Image":
+        Image()
+    elif commande[0:6] == "QImage":
+        QImage()
+    elif commande[0:16] == "LogarithmDecimal":
+        LogarithmDecimal(float(commande[17:-1]))
+    elif commande[0:17] == "QLogarithmDecimal":
+        QLogarithmDecimal()
+    elif commande[0:16] == "LogarithmNatural":
+        LogarithmNatural(float(commande[17:-1]))
+    elif commande[0:17] == "QLogarithmNatural":
+        QLogarithmNatural()
+    elif commande[0:9] == "Logarithm":
+        Logarithm(commande[10:commande.find(",")],float(commande[commande.find(",")+1:-1]))
+    elif commande[0:10] == "QLogarithm":
+        QLogarithm()
+    elif commande[0:12] == "AsciiArtText":
+        AsciiArtText(commande[13:-1])
+    elif commande[0:13] == "QAsciiArtText":
+        QAsciiArtText()
+    elif commande[0:9] == "Factorial":
+        Factorial(float(commande[10:-1]))
+    elif commande[0:10] == "QFactorial":
+        QFactorial()
+    elif commande[0:3] == "Add":
+        commande = commande[0:len(commande)-1] + ","
+        somme = []
+        m = ""
+        for j in commande[4:len(commande)]:
+            if j != ",":
+                m = m + j
+            else :
+                somme.append(m)
+                m = ""
+        Add(somme)
+    elif commande[0:4] == "QAdd":
+        QAdd()
+    elif commande[0:8] == "Multiply":
+        commande = commande[0:len(commande)-1] + ","
+        somme = []
+        m = ""
+        for j in commande[9:len(commande)]:
+            if j != ",":
+                m = m + j
+            else :
+                somme.append(m)
+                m = ""
+        Multiply(somme)
+    elif commande[0:9] == "QMultiply":
+        QMultiply()
+    elif commande[0:6] == "Divide":
+      Divide(float(commande[7:commande.find(",")]),float(commande[commande.find(",")+1:-1]))
+    elif commande[0:7] == "QDivide":
+        QDivide()
+    elif commande[0:9] == "Partition":
+        Partition(commande[10:-1])
+    elif commande[0:10] == "QPartition":
+        QPartition()
+    elif commande[0:6] == "Length":
+        Length(commande[7:-1])
+    elif commande[0:7] == "QLength":
+        QLength()
+    elif commande[0:10] == "Transcript":
+        Transcript(commande[11:-1])
+    elif commande[0:11] == "QTranscript":
+        QTranscript()
+    elif commande[0:9] == "Translate":
+        Translate(commande[10:-1])
+    elif commande[0:10] == "QTranslate":
+        QTranslate()
+    elif commande[0:12] == "Complementar":
+      Complementar(commande[13:commande.find(",")],commande[commande.find(",")+1:-1])
+    elif commande[0:13] == "QComplementar":
+        QComplementar()
+    elif commande[0:7] == "Biology":
+        Biology()
+    elif commande[0:8] == "QBiology":
+        QBiology()
+    elif commande[0:7] == "Physics":
+       Physics()
+    elif commande[0:8] == "QPhysics":
+       QPhysics()
+    elif commande[0:9] == "Chemistry":
+        Chemistry()
+    elif commande[0:10] == "QChemistry":
+        QChemistry()
+    elif commande[0:9] == "MathBasic":
+        MathBasic()
+    elif commande[0:10] == "QMathBasic":
+        QMathBasic()
+    elif commande[0:12] == "MathAdvanced":
+        MathAdvanced()
+    elif commande[0:13] == "QMathAdvanced":
+        QMathAdvanced()
+    elif commande[0:4] == "Math":
+        Math()
+    elif commande[0:5] == "QMath":
+        QMath()
+    elif commande[0:4] == "Text":
+        Text()
+    elif commande[0:5] == "QText":
+        QText()
+    elif commande[0:10] == "AsciiTable":
+        AsciiTable(int(commande[11:-1]))
+    elif commande[0:11] == "QAsciiTable":
+        QAsciiTable()
+    elif commande[0:8] == "AsciiChr":
+        AsciiChr(int(commande[9:-1]))
+    elif commande[0:9] == "QAsciiChr":
+        QAsciiChr()
+    elif commande[0:8] == "AsciiPos":
+        AsciiPos(commande[9:-1])
+    elif commande[0:9] == "QAsciiPos":
+        QAsciiPos()
+    elif commande[0:9] == "MultipleQ":
+      MultipleQ(int(commande[10:commande.find(",")]),int(commande[commande.find(",")+1:-1]))
+    elif commande[0:10] == "QMultipleQ":
+      QMultipleQ()
+    elif commande[0:8] == "Goldbach":
+      Goldbach(int(commande[9:-1]))
+    elif commande[0:9] == "QGoldbach":
+      QGoldbach()
+    elif commande[0:5] == "Herat":
+        Heratosthenes(int(commande[commande.find("(")+1:-1]))
+    elif commande[0:6] == "QHerat":
+        QHeratosthenes()
+    elif commande[0:2] == "Pi":
+        Pi(int(commande[3:-1]))
+    elif commande[0:3] == "QPi":
+        QPi()
+    elif commande[0:11] == "PrimeFactor":
+        PrimeFactor(int(commande[12:-1]))
+    elif commande[0:12] == "QPrimeFactor":
+        QPrimeFactor()
+    elif commande[0:8] == "Divisors":
+        Divisors(commande[9:-1])
+    elif commande[0:9] == "QDivisors":
+        QDivisors()
+    elif commande[0:9] == "Euclidian":
+        Euclidian(int(commande[10:commande.find(",")]),int(commande[commande.find(",")+1:-1]))
+    elif commande[0:10] == "QEuclidian":
+        QEuclidian()
+    elif commande[0:6] == "PrimeQ":
+        PrimeQ(int(commande[7:-1]))
+    elif commande[0:7] == "QPrimeQ":
+        QPrimeQ()
+    elif commande[0:6] == "Modulo":
+        Modulo(int(commande[7:commande.find(",")]),int(commande[commande.find(",")+1:-1]))
+    elif commande[0:7] == "QModulo":
+        QModulo()
+    elif commande[0:4] == "Prob":
+        Probability(int(commande[commande.find("(")+1:commande.find(",")]),int(commande[commande.find(",")+1:-1]))
+    elif commande[0:5] == "QProb":
+        QProbability()
+    elif commande[0:10] == "Cryptology":
+        Cryptology()
+    elif commande[0:11] == "QCryptology":
+        QCryptology()
+    elif commande[0:12] == "CesarEncrypt":
+        CesarEncrypt(commande[13:commande.find(",")],commande[commande.find(",")+1:-1])
+    elif commande[0:13] == "QCesarEncrypt":
+        QCesarEncrypt()
+    elif commande[0:12] == "CesarDecrypt":
+        CesarDecrypt(commande[13:commande.find(",")],commande[commande.find(",")+1:-1])
+    elif commande[0:13] == "QCesarDecrypt":
+        QCesarDecrypt()
+    elif commande[0:5] == "Clear":
+        Clear()
+    elif commande[0:6] == "QClear":
+        QClear()
+    elif commande[0:7] == "Average":
+        commande = commande[0:-1] + ","
+        numbers = []
+        m = ""
+        for j in commande[8:len(commande)]:
+            if j != ",":
+                m = m + j
+            else :
+                numbers.append(m)
+                m = ""
+        Average(numbers)
+    elif commande[0:8] == "QAverage":
+        QAverage()
+    elif commande[0:6] == "Median":
+        commande = commande[0:-1] + ","
+        numbers = []
+        m = ""
+        for j in commande[7:len(commande)]:
+            if j != ",":
+                m = m + j
+            else :
+                numbers.append(m)
+                m = ""
+        Median(numbers)
+    elif commande[0:7] == "QMedian":
+        QMedian()
+    elif commande[0:5] == "Polar":
+        commande = commande[0:-1] + ","
+        coord = []
+        m = ""
+        for j in commande[6:len(commande)]:
+            if j != ",":
+                m = m + j
+            else :
+                coord.append(float(m))
+                m = ""
+        Polar(coord)
+    elif commande[0:6] == "QPolar":
+        QPolar()
+    elif commande[0:9] == "Cartesian":
+        commande = commande[0:-1] + ","
+        coord = []
+        m = ""
+        for j in commande[10:len(commande)]:
+            if j != ",":
+                m = m + j
+            else :
+                coord.append(float(m))
+                m = ""
+        Cartesian(coord)
+    elif commande[0:10] == "QCartesian":
+        QCartesian()
+    elif commande[0:11] == "Arrangement":
+      Arrangement(int(commande[12:commande.find(",")]),int(commande[commande.find(",")+1:-1]))
+    elif commande[0:12] == "QArrangement":
+        QArrangement()
+    elif commande[0:11] == "Combination":
+      Combination(int(commande[12:commande.find(",")]),int(commande[commande.find(",")+1:-1]))
+    elif commande[0:12] == "QCombination":
+        QCombination()
+    elif commande[0:7] == "Expanse":
+        Expanse(int(commande[8:-1]))
+    elif commande[0:8] == "QExpanse":
+        QExpanse()
+    elif commande[0:13] == "RationalZeros":
+        equation = commande[14:-1]
+        factors = []
+        c = ""
+        i = 14
+        while i < len(commande):
+            if commande[i] != " ":
+                c = c + commande[i]
+            elif commande[i+1] == "-":
+                c = c + " "
+            i = i + 1
+        commande = c
+        m = ""
+        numbers = ["1","2","3","4","5","6","7","8","9","0","-"]
+        for j in commande:
+            if numbers.count(j) > 0:
+                m = m + j
+            else :
+                if len(m) > 0:
+                    factors.append(int(m))
+                m = ""
+        RationalZeros(factors,equation)
+    elif commande[0:14] == "QRationalZeros":
+        QRationalZeros()
+    elif commande[0:15] == "PolynomialTable":
+        equation = commande[16:-1]
+        factors = []
+        c = ""
+        i = 16
+        while commande[i] != ",":
+            if commande[i] != " ":
+                c = c + commande[i]
+            elif commande[i+1] == "-":
+                c = c + " "
+            i = i + 1
+        c = c + ","
+        m = ""
+        numbers = ["1","2","3","4","5","6","7","8","9","0","-","."]
+        for j in c:
+            if numbers.count(j) > 0:
+                m = m + j
+            else :
+                if len(m) > 0:
+                    factors.append(float(m))
+                m = ""
+        i = i + 1
+        m = ""
+        while commande[i] != ",":
+            m = m + commande[i]
+            i = i + 1
+        begin = float(m)
+        i = i + 1
+        m = ""
+        while commande[i] != ",":
+            m = m + commande[i]
+            i = i + 1
+        end = float(m)
+        i = i + 1
+        m = ""
+        while commande[i] != ")":
+            m = m + commande[i]
+            i = i + 1
+        pas = float(m)
+        PolynomialTable(factors,begin,end,pas,equation)
+    elif commande[0:16] == "QPolynomialTable":
+        QPolynomialTable()
+    elif commande[0:2] == "Ph":
+        Ph(float(commande[3:-1]))
+    elif commande[0:3] == "QPh":
+        QPh()
+    elif commande[0:5] == "Viete":
+        numbers = ["1","2","3","4","5","6","7","8","9","0","-","."]
+        m = ""
+        factor = []
+        factors = []
+        equation = commande[6:-1]
+        for i in commande[6:-1]:
+            if numbers.count(i) > 0:
+                m = m + str(i)
+            else :
+                if len(m) > 0:
+                    factor.append(float(m))
+                m = ""
+        factors.append(factor[0])
+        factors.append(factor[2])
+        factors.append(factor[3])
+        Viete(factors,equation)
+    elif commande[0:6] == "QViete":
+        QViete()
+    elif commande[0:5] == "LeapQ":
+        LeapQ(int(commande[6:-1]))
+    elif commande[0:6] == "QLeapQ":
+        QLeapQ()
+    elif commande[0:8] == "Calendar":
+        Calendar()
+    elif commande[0:9] == "QCalendar":
+        QCalendar()
+    elif commande[0:4] == "Date":
+        Date()
+    elif commande[0:5] == "QDate":
+        QDate()
+    elif commande[0:4] == "Time":
+        Time()
+    elif commande[0:5] == "QTime":
+        QTime()
+    elif commande[0:3] == "Day":
+        k = commande[4:]
+        m = ""
+        i = 0
+        while k[i] != ",":
+            m = m + k[i]
+            i = i + 1
+        day = int(m)
+        m = ""
+        i = i + 1
+        while k[i] != ",":
+            m = m + k[i]
+            i = i + 1
+        month = m
+        m = ""
+        i = i + 1
+        while k[i] != ")":
+            m = m + k[i]
+            i = i + 1
+        year = int(m)
+        m = ""
+        i = i + 1
+        Day(day,month,year)
+    elif commande[0:4] == "QDay":
+        QDay()
+    elif commande[0:4] == "Help":
+        Help()
+    elif commande[0:5] == "QHelp":
+        QHelp()
+            
+                
+                
+                
+        
+
+
+
+
+
+  
+
+
+    elif commande == "search number":
+      search_number()
+    elif commande == "modulo":
+      modulo()
+    elif commande == "weighted average":
+      weighted_average()
+    elif commande == "vector dot":
+      vector_dot()
+    elif commande == "vector cross":
+      vector_cross()
+    elif commande == "norm":
+      norm()
+    elif commande == "alphabet to binary":
+      binary()
+    elif commande == "alphabet to hexadecimal":
+      hexadecimal()
+    elif commande == "alphabet to morse":
+      morse()
+    elif commande == "morse to alphabet":
+      morse_inverse()
+    elif commande == "binary to alphabet":
+      binary_inverse()
+    elif commande == "hexadecimal to alphabet":
+      hexadecimal_inverse()
+    elif commande == "encrypt vigenere":
+      encrypt_vigenere()
+    elif commande == "encrypt vernam":
+      vernam()
+    elif commande == "decrypt vigenere" or commande == "decrypt vernam":
+      decrypt_vigenere()
+    elif commande == "molar mass":
+      molar_mass()
+    elif commande == "quantity":
+      quantity()
+    elif commande == "gravity":
+      gravity()
+    elif commande == "pressure":
+      pressure()
+    elif commande == "game add":
+      game_add()
+    elif commande == "game times":
+      game_times()
+    elif commande == "game substract":
+      game_substract()
+    elif commande == "joke":
+      joke()
+    elif commande == "theorem":
+      theorem()
+    elif commande == "date difference":
+      date_difference()
+    elif commande == "date day":
+      date_day()
+    elif commande == "help":
+      help()
+    elif commande == "quit":
+        print("Shutting down the programm\n\n")
+        sleep(0.5)
+        print("====================")
+        print("Luca Charlier © 2021")
+        print("====================")
+        sleep(1.5)
+        break
+    else :
+        if len(commande) == 0:
+            print("Please type a command to use instead of nothing.")
+        else :
+            if commande.find("(") > 0 and commande[-1] == ")":
+                print("No command has been found under the name \"", commande[0:commande.find("(")],"\"")
+            else :
+                print("This input makes no sens for the computer. Please try again.")
+        
